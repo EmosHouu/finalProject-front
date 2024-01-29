@@ -1,9 +1,10 @@
 <template>
-  <v-app>
-    <default-view />
-  </v-app>
+  <Header/>
+  <div>
+    <router-link to="/register">註冊頁面</router-link>
+  </div>
 </template>
 
 <script setup>
-  import DefaultView from './View.vue'
+import Header from '@/components/HeaderView.vue'
 </script>
