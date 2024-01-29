@@ -8,7 +8,7 @@
             </div>
         </div>
         <v-toolbar color="#FFDA4A" height="30px">
-  
+
         <template v-slot:extension>
           <v-tabs
             v-model="tab"
@@ -24,7 +24,7 @@
           </v-tabs>
         </template>
       </v-toolbar>
-  
+
       <v-window v-model="tab">
         <v-window-item
           v-for="item in items"
@@ -38,20 +38,20 @@
       </v-window>
     </v-card>
   </template>
-  
-  <script>
-    export default {
-      data () {
-        return {
-          tab: null,
-          items: [
-            '揪團玩', '揪團行', '揪團買', '揪團住', '好康報你知',
-          ],
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        }
-      },
+
+<script>
+export default {
+  data () {
+    return {
+      tab: null,
+      items: [
+        '揪團玩', '揪團行', '揪團買', '揪團住', '好康報你知'
+      ],
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
     }
-  </script>
+  }
+}
+</script>
   <style scoped>
   .backgroundImg {
     background-image:url("@/assets/山2.png");

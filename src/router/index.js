@@ -1,10 +1,10 @@
 // Composables
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
   {
     path: '/',
-    component: () => import('@/layouts/default/Default.vue'),
+    component: () => import('@/layouts/default/FrontLayout.vue'),
     children: [
       {
         path: '',
@@ -12,15 +12,29 @@ const routes = [
         // route level code-splitting
         // this generates a separate chunk (Home-[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import('@/views/Home.vue'),
+        component: () => import('@/views/HomeView.vue'),
+        meta: {
+          title: '購物網'
+        }
       },
-    ],
-  },
+      {
+        path: 'register',
+        name: 'Register',
+        // route level code-splitting
+        // this generates a separate chunk (Home-[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import('@/views/RegisterView.vue'),
+        meta: {
+          title: '購物網|註冊'
+        }
+      }
+    ]
+  }
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
+  history: createWebHashHistory(process.env.BASE_URL),
+  routes
 })
 
 export default router
