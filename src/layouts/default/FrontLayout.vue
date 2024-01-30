@@ -1,10 +1,13 @@
 <template>
-  <Header />
-  <v-main>
-    <routerView></routerView>
-  </v-main>
+  <HeaderView/>
+  <CarouselView/>
+
+  <div>
+    <router-link to="/register">註冊頁面</router-link>
+  </div>
 </template>
 
 <script setup>
-import Header from '@/components/HeaderView.vue'
+import HeaderView from '@/components/HeaderView.vue';
+import CarouselView from '@/components/CarouselView.vue';
 </script>
