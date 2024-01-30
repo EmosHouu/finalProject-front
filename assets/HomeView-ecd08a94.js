@@ -1,0 +1,1 @@
+import{_ as o}from"./_plugin-vue_export-helper-c27b6911.js";import{ah as t,a5 as a,ab as r,b as n,a7 as c,aa as s}from"./index-2acb749c.js";const _={};function l(i,m){const e=t("router-link");return a(),r("div",null,[n(e,{to:"/"},{default:c(()=>[s("首頁")]),_:1})])}const p=o(_,[["render",l]]);export{p as default};
