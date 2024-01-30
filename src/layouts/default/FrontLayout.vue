@@ -1,8 +1,8 @@
 <template>
-  <Header/>
-  <div>
-    <router-link to="/register">註冊頁面</router-link>
-  </div>
+  <Header />
+  <v-main>
+    <routerView></routerView>
+  </v-main>
 </template>
 
 <script setup>
