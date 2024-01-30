@@ -1,0 +1,1 @@
+import{C as t}from"./CarouselView-e3c1dd2d.js";import{ac as o,a1 as r,a7 as s,a4 as n,b as e,a3 as c,F as l,a6 as m}from"./index-578c03b4.js";import"./VContainer-b31034a5.js";const V={__name:"HomeView",setup(_){return(i,p)=>{const a=o("router-link");return r(),s(l,null,[n("div",null,[e(a,{to:"/"},{default:c(()=>[m("首頁")]),_:1})]),e(t)],64)}}};export{V as default};
