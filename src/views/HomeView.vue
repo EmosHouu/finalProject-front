@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <router-link to="/">首頁</router-link>
-  </div>
-  <CarouselView/>
+  <CarouselView />
 </template>
 
 <script setup>
+import CarouselView from '@/components/CarouselView.vue'
 
   import CarouselView from '@/components/CarouselView.vue';
 </script>
