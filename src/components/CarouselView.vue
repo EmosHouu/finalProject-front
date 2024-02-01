@@ -1,7 +1,5 @@
 <template>
-      <v-app>
-            <v-container>
-                <v-carousel v-model="carouselIndex" show-arrows="hover">
+                <v-carousel v-model="carouselIndex" show-arrows="hover" hide-delimiter-background>
                     <v-carousel-item v-for="(item, index) in carouselItems" :key="index" class="carousel-item">
                         <v-img :src="item.src" class="fill-height" cover></v-img>
                         <div class="svg-overlay">
@@ -85,8 +83,6 @@
                         </div>
                     </v-carousel-item>
                 </v-carousel>
-            </v-container>
-        </v-app>
 </template>
 <script setup>
 import { ref } from 'vue';
