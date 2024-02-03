@@ -102,7 +102,7 @@ VContainer
           location: 'bottom'
         }
       })
-      router.push('/login')
+      router.push('/')
     } catch (error) {
       const text = error?.response?.data?.message || '發生錯誤，請稍後再試'
       createSnackbar({  
@@ -116,5 +116,6 @@ VContainer
       })
     }
   })
+  
   </script>
   

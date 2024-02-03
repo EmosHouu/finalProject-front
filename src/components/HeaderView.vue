@@ -18,59 +18,60 @@ alt=""
         <p>購物車</p>
       </div>
 
-      <v-dialog width="500">
+      <v-dialog
+v-model="dialogVisible"
+width="500"
+>
         <template #activator="{ props }">
           <div
-          class="member"
-          v-bind="props"
-          @click="showPopup"
-          >
-          <span class="mdi mdi-account Icon"></span>
-          <p>會員登入</p>
+class="member"
+v-bind="props"
+@click="showPopup"
+>
+            <span class="mdi mdi-account Icon"></span>
+            <p>會員登入</p>
           </div>
         </template>
 
         <template #default="{ isActive }">
           <v-card
-          class="login"
-          title="會員登入"
-          >
-                          <div
-          class="closeLogin"
-          @click="isActive.value = false"
-          >x</div>
-          <v-form
-          class="loginForm"
-          validate-on="submit lazy"
-          @submit.prevent="submit"
-          >
-          <v-text-field
-v-model="loginAccount"
-:rules="rules"
+class="login"
+title="會員登入"
+>
+            <div
+class="closeLogin"
+@click="isActive.value = false"
+>x</div>
+<VForm
+:disabled="isSubmitting"
+@submit.prevent="submit"
+>
+                <VTextField
+v-model="account.value.value"
 label="帳號"
-hint="請輸入帳號"
-></v-text-field>
-<v-text-field
-v-model="Password"
-:rules="rules"
+minlength="4"
+maxlength="20"
+counter="counter"
+:error-messages="account.errorMessage.value"
+></VTextField>
+                <VTextField
+v-model="password.value.value"
 label="密碼"
-hint="請輸入密碼"
-></v-text-field>
-<v-btn
-:loading="loading"
+type="password"
+minlength="4"
+maxlength="20"
+counter="counter"
+:error-messages="password.errorMessage.value"
+></VTextField>
+                <VBtn
 type="submit"
-block
-class="mt-2"
-text="登入"
-></v-btn>
-            </v-form>
+color="green"
+>登入</VBtn>
+            </VForm>
 
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <VBtn
-              @click="navigateToRegister"
-              >
-              還沒有帳號？前往註冊
+            <v-card-actions style="display: flex; justify-content: center;">
+              <VBtn @click="navigateToRegister">
+                還沒有帳號？前往註冊
               </VBtn>
             </v-card-actions>
           </v-card>
@@ -112,134 +113,183 @@ v-for="item in items"
   </v-card>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
-import { useRouter } from 'vue-router' // 引入useRouter
+import { useRouter } from 'vue-router'
+import { useForm, useField } from 'vee-validate'
+import * as yup from 'yup'
+import { api } from '@/plugins/axios'
+import { useSnackbar } from 'vuetify-use-dialog'
 
-export default {
-  setup () {
-    const router = useRouter() // 使用useRouter獲取router實例
+const router = useRouter()
 
-    const tab = ref(null)
-    const items = ['揪團玩', '揪團行', '揪團買', '揪團住', '好康報你知']
-    const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+const tab = ref(null)
+const items = ['揪團玩', '揪團行', '揪團買', '揪團住', '好康報你知']
+const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
 
-    const loginAccount = ref('')
-    const Password = ref('')
-    const loading = ref(false)
-    const rules = [(v) => !!v || 'Field is required']
+const dialogVisible = ref(false) // 控制弹窗显示的响应式变量
 
-    const showPopup = () => {
-    // 在這裡執行彈跳視窗相關邏輯
-    }
-
-    const submit = () => {
-    // 在這裡處理表單提交相關邏輯
-    }
-
-    const navigateToRegister = () => {
-      router.push('/register') // 使用router.push導航到RegisterView
-    }
-
-    return {
-      tab,
-      items,
-      text,
-      loginAccount,
-      Password,
-      loading,
-      rules,
-      showPopup,
-      submit,
-      navigateToRegister // 將此方法暴露給模板
-    }
-  }
+const showPopup = () => {
+  dialogVisible.value = true // 设置弹窗显示
 }
+
+const navigateToRegister = () => {
+  router.push('/register') // 使用router.push導航到RegisterView
+  dialogVisible.value = false // 关闭弹窗
+}
+
+// 定義註冊表單的資料格式
+const schema = yup.object({
+  account: yup
+    .string()
+    .required('帳號為必填欄位')
+    .min(4, '使用者帳號長度不符')
+    .max(20, '使用者帳號長度不符'),
+  password: yup
+    .string()
+    .required('密碼為必填欄位')
+    .min(4, '密碼長度不符')
+    .max(20, '密碼長度不符')
+})
+
+const { handleSubmit, isSubmitting } = useForm({
+  validationSchema: schema
+})
+
+const account = useField('account')
+const password = useField('password')
+const createSnackbar = useSnackbar()
+
+const submit = handleSubmit(async (values) => {
+  try {
+    await api.post('/users/login', {
+      account: values.account,
+      password: values.password
+    })
+    createSnackbar({
+      text: '登入成功',
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'green',
+        location: 'bottom'
+      }
+    })
+    // 关闭弹窗
+    dialogVisible.value = false
+    router.push('/')
+  } catch (error) {
+    const text = error?.response?.data?.message || '發生錯誤，請稍後再試'
+    createSnackbar({
+      text,
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'red',
+        location: 'bottom'
+      }
+    })
+  }
+})
+
 </script>
 
 <style scoped>
 .backgroundImg {
-  background-image:url("@/assets/山2.png");
+  background-image: url("@/assets/山2.png");
   background-repeat: repeat-x;
   width: 100%;
   position: absolute;
   bottom: -10px;
   /* width:100%; */
 }
-.backgroundImg img{
+
+.backgroundImg img {
   height: 100%;
 }
-.temple{
-  width:150px;
+
+.temple {
+  width: 150px;
   position: absolute;
-  top:15px;
-  left:100px;
+  top: 15px;
+  left: 100px;
 }
-.sun{
-  width:100px;
+
+.sun {
+  width: 100px;
   position: absolute;
-  top:10px;
-  right:100px;
+  top: 10px;
+  right: 100px;
   animation: rotateSun 10s linear infinite;
 }
+
 @keyframes rotateSun {
-from {
-  transform: rotate(0deg);
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
-to {
-  transform: rotate(360deg);
-}
-}
-.headerBG{
-  background-color:#FFEFE8 ;
-  height:150px;
+
+.headerBG {
+  background-color: #FFEFE8;
+  height: 150px;
   position: relative;
 }
-.cart{
+
+.cart {
   position: absolute;
-  right:470px;
-  top:15px;
+  right: 470px;
+  top: 15px;
   background-color: #E79130;
-  color:white;
-  width:80px;
-  height:80px;
+  color: white;
+  width: 80px;
+  height: 80px;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
   border-radius: 20px;
   box-shadow: 0px 5px 5px 2px #e5cfcf
 }
-.member{
+
+.member {
   position: absolute;
-  right:350px;
-  top:15px;
+  right: 350px;
+  top: 15px;
   background-color: #F8B44B;
-  color:white;
-  width:80px;
-  height:80px;
+  color: white;
+  width: 80px;
+  height: 80px;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
   border-radius: 20px;
   box-shadow: 0px 5px 5px 2px #e5cfcf
 }
-.member:hover{
+
+.member:hover {
   cursor: pointer;
 }
-.Icon{
-  font-size:32px;
+
+.Icon {
+  font-size: 32px;
 }
-.login{
+
+.login {
   padding: 10px;
-  position:relative;
+  position: relative;
   overflow: visible !important;
 }
-.loginForm{
+
+.loginForm {
   padding: 20px;
 }
-.closeLogin{
-  width:30px;
-  height:30px;
+
+.closeLogin {
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background-color: rgb(244, 225, 225);
   color: black;
@@ -247,10 +297,11 @@ to {
   top: -10px;
   right: -10px;
   text-align: center;
-  line-height:30px;
+  line-height: 30px;
   z-index: 99;
 }
-.closeLogin:hover{
+
+.closeLogin:hover {
   cursor: pointer;
 }
 </style>

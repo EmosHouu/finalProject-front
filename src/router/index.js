@@ -27,6 +27,17 @@ const routes = [
         meta: {
           title: '購物網|註冊'
         }
+      },
+      {
+        path: 'test',
+        name: 'test',
+        // route level code-splitting
+        // this generates a separate chunk (Home-[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import('@/components/testView.vue'),
+        meta: {
+          title: '購物網|註冊'
+        }
       }
     ]
   }
