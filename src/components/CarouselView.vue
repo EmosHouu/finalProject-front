@@ -24,7 +24,8 @@
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                 >
-                    <g class="hokkaido mapSection"
+                    <g
+class="hokkaido mapSection"
                         opacity="0.8"
                         data-index="0"
                         @click="changeCarouselItem(0)"

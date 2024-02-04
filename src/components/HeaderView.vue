@@ -9,6 +9,7 @@ src="../assets/鳥居4.png"
 class="sun"
 src="../assets/太陽.png"
 alt=""
+@click="navigateToHome"
 />
       <div class="backgroundImg">
         <img src="../assets/山2.png" />
@@ -35,27 +36,31 @@ v-bind="props"
 
         <template #default="{ isActive }">
           <v-card
-class="login"
-title="會員登入"
->
-            <div
-class="closeLogin"
-@click="isActive.value = false"
->x</div>
-<VForm
-:disabled="isSubmitting"
-@submit.prevent="submit"
->
-                <VTextField
+          style="margin-bottom:50px;"
+          class="login"
+          title="會員登入"
+          >
+          <div
+          class="closeLogin"
+          @click="isActive.value = false"
+          >x</div>
+          <VForm
+          :disabled="isSubmitting"
+          @submit.prevent="submit"
+          >
+<br>
+<VTextField
 v-model="account.value.value"
+class="custom-text-field"
 label="帳號"
 minlength="4"
 maxlength="20"
 counter="counter"
 :error-messages="account.errorMessage.value"
 ></VTextField>
-                <VTextField
+<VTextField
 v-model="password.value.value"
+class="custom-text-field"
 label="密碼"
 type="password"
 minlength="4"
@@ -63,10 +68,15 @@ maxlength="20"
 counter="counter"
 :error-messages="password.errorMessage.value"
 ></VTextField>
-                <VBtn
-type="submit"
-color="green"
->登入</VBtn>
+
+          <div class="button-container">
+            <VBtn
+            type="submit"
+            color="#F8B44B"
+            >登入
+            </VBtn>
+          </div>
+
             </VForm>
 
             <v-card-actions style="display: flex; justify-content: center;">
@@ -92,6 +102,7 @@ align-tabs="title"
 v-for="item in items"
 :key="item"
 :value="item"
+@click="item === '首頁' ? navigateToHome() : item === '揪團玩' ? navigateToPlay() : item === '揪團行' ? navigateToDrive(): item ==='揪團買'?navigateToBuy() : item === '揪團住'? navigateToHotel() : item === '好康報你知'? navigateToNews() : null "
 >
             {{ item }}
           </v-tab>
@@ -106,7 +117,7 @@ v-for="item in items"
 :value="item"
 >
         <v-card flat>
-          <v-card-text v-text="text"></v-card-text>
+
         </v-card>
       </v-window-item>
     </v-window>
@@ -124,8 +135,7 @@ import { useSnackbar } from 'vuetify-use-dialog'
 const router = useRouter()
 
 const tab = ref(null)
-const items = ['揪團玩', '揪團行', '揪團買', '揪團住', '好康報你知']
-const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+const items = ['首頁', '揪團玩', '揪團行', '揪團買', '揪團住', '好康報你知']
 
 const dialogVisible = ref(false) // 控制弹窗显示的响应式变量
 
@@ -158,7 +168,36 @@ const { handleSubmit, isSubmitting } = useForm({
 
 const account = useField('account')
 const password = useField('password')
+// 最下方會顯示的狀態列可以取代ALERT
 const createSnackbar = useSnackbar()
+
+// 頁面跳轉區
+// 添加 navigateToHome 函数
+const navigateToHome = () => {
+  router.push('/') // 导航到首页
+}
+
+// 添加 navigateToPlay 函数
+const navigateToPlay = () => {
+  router.push('/play') // 导航到 PlayView
+}
+
+const navigateToDrive = () => {
+  router.push('/drive') // 导航到 driveView
+}
+
+const navigateToBuy = () => {
+  router.push('/buy') // 导航到 driveView
+}
+
+const navigateToHotel = () => {
+  router.push('/hotel') // 导航到 driveView
+}
+
+const navigateToNews = () => {
+  router.push('/news') // 导航到 driveView
+}
+// 頁面跳轉區結束
 
 const submit = handleSubmit(async (values) => {
   try {
@@ -304,4 +343,15 @@ const submit = handleSubmit(async (values) => {
 .closeLogin:hover {
   cursor: pointer;
 }
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* 根据需要调整间距 */
+}
+
+.custom-text-field {
+  width: 90%; /* 或者使用您希望的具体宽度值 */
+  margin: auto; /* 居中对齐 */
+}
+
 </style>

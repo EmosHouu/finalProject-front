@@ -1,21 +1,30 @@
 <template>
     <div class="bg">
-        <div class="circle" :style="{ backgroundColor: backgroundColor }">{{circleText}}</div>
-        <div class="text">{{cartText}}</div>
-        <div class="img"><img :src="img" alt="img"></div>
+        <div
+class="circle"
+:style="{ backgroundColor: backgroundColor }"
+>{{ circleText }}</div>
+        <div class="text">{{ cartText }}</div>
+        <div class="img"><img
+:src="img"
+alt="img"
+></div>
         <div class="card">card</div>
         <div class="btn">
-            <MainBtnView mainBtn="揪團去"></MainBtnView>
-            <SubBtnView subBtn="開團去"></SubBtnView>
+            <MainBtnView main-btn="揪團去"></MainBtnView>
+            <SubBtnView sub-btn="開團去"></SubBtnView>
         </div>
-        <div class="bottomImg"><img :src="bottomImg" alt="bottomImg"></div>
+        <div class="bottomImg"><img
+:src="bottomImg"
+alt="bottomImg"
+></div>
     </div>
 </template>
 <script setup>
-import MainBtnView from './btn/MainBtnView.vue';
-import SubBtnView from './btn/SubBtnView.vue';
-import {defineProps} from 'vue';
-const props = defineProps(['circleText','cartText','img','backgroundColor','bottomImg'])
+import MainBtnView from './btn/MainBtnView.vue'
+import SubBtnView from './btn/SubBtnView.vue'
+import { defineProps } from 'vue'
+const props = defineProps(['circleText', 'cartText', 'img', 'backgroundColor', 'bottomImg'])
 
 </script>
 <style scoped>
