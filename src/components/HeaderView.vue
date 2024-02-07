@@ -20,6 +20,7 @@ alt=""
       </div>
 
       <v-dialog
+      v-if="!user.isLogin"
 v-model="dialogVisible"
 width="500"
 >
@@ -31,7 +32,9 @@ v-bind="props"
 >
             <span class="mdi mdi-account Icon"></span>
             <p>會員登入</p>
+
           </div>
+
         </template>
 
         <template #default="{ isActive }">
@@ -87,6 +90,14 @@ counter="counter"
           </v-card>
         </template>
       </v-dialog>
+      <div
+v-if="user.isLogin"
+class="member"
+@click="logout"
+>
+            <span class="mdi mdi-logout Icon"></span>
+            <p>登出</p>
+          </div>
     </div>
 
     <v-toolbar
@@ -129,10 +140,13 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useForm, useField } from 'vee-validate'
 import * as yup from 'yup'
-import { api } from '@/plugins/axios'
+import { useApi } from '@/composable/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
+import { useUserStore } from '@/store/user'
 
 const router = useRouter()
+const { api, apiAuth } = useApi()
+const user = useUserStore()
 
 const tab = ref(null)
 const items = ['首頁', '揪團玩', '揪團行', '揪團買', '揪團住', '好康報你知']
@@ -201,10 +215,11 @@ const navigateToNews = () => {
 
 const submit = handleSubmit(async (values) => {
   try {
-    await api.post('/users/login', {
+    const { data } = await api.post('/users/login', {
       account: values.account,
       password: values.password
     })
+    user.login(data.result)
     createSnackbar({
       text: '登入成功',
       showCloseButton: false,
@@ -230,6 +245,35 @@ const submit = handleSubmit(async (values) => {
     })
   }
 })
+
+// 登出
+const logout = async () => {
+  try {
+    await apiAuth.delete('/users/logout')
+    user.logout()
+    createSnackbar({
+      text: '登出成功',
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'green',
+        location: 'bottom'
+      }
+    })
+    router.push('/')
+  } catch (error) {
+    const text = error?.response?.data?.message || '發生錯誤，請稍後再試'
+    createSnackbar({
+      text,
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'red',
+        location: 'bottom'
+      }
+    })
+  }
+}
 
 </script>
 
@@ -355,3 +399,4 @@ const submit = handleSubmit(async (values) => {
 }
 
 </style>
+@/store/users

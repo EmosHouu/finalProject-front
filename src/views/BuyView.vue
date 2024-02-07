@@ -1,3 +1,14 @@
 <template>
-  <h1>揪團買</h1>
+  <v-container>
+    <v-row>
+      <v-col>
+        <v-card>
+          <v-card-title>揪團買</v-card-title>
+          <v-card-text>
+            <p>這是揪團買的內容</p>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
