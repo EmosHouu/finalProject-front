@@ -43,7 +43,7 @@ maxlength="20"
 
           VBtn(
 type="submit"
-color="green") 註冊
+color="#F8B44B") 註冊
 </template>
 
 <script setup>
