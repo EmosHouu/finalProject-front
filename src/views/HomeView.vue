@@ -43,8 +43,9 @@ import HomeCardViewVue from '@/components/HomeCardView.vue'
 <style scoped>
 .cardBody{
   width: 100%;
-  height:100%;
+  /* height:100%; */
   background-color: #FFEFE8;
   padding-top:80px;
 }
+
 </style>

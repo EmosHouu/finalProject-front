@@ -17,6 +17,7 @@
         justify-content: center;
         align-items: center;
         margin:10px;
-        box-shadow: 1px 1px 0 0 gray;
+        /* box-shadow: 1px 1px 0 0 gray; */
+        box-shadow: 0px 3px 2px 1px #e5cfcf;
     }
 </style>

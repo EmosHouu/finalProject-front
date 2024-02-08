@@ -1,7 +1,8 @@
 <template>
-    <v-carousel
+    <v-carousel class="carousel"
         v-model="carouselIndex"
         show-arrows="hover"
+        hide-delimiters
         hide-delimiter-background
     >
         <v-carousel-item
@@ -407,6 +408,9 @@ class="hokkaido mapSection"
             </div>
         </v-carousel-item>
     </v-carousel>
+    <div class="curve">
+        <img src="../assets/波浪間隔.png"/>
+    </div>
 </template>
 <script setup>
 import { ref } from 'vue'
@@ -467,5 +471,14 @@ const resetHover = () => {
 
 .mapSection.clicked path {
   fill: yellow;
+}
+.carousel{
+    position:relative
+}
+.curve{
+  position: absolute;
+  top:605px;
+  width:100%;
+  object-fit: cover;
 }
 </style>
