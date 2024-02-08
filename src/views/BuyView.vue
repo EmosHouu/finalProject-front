@@ -1,14 +1,18 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col>
-        <v-card>
-          <v-card-title>揪團買</v-card-title>
-          <v-card-text>
-            <p>這是揪團買的內容</p>
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div class="header">
+    <SmallCarouselView :title="'揪團買'"></SmallCarouselView>
+
+  </div>
 </template>
+
+<script setup>
+import SmallCarouselView from '../components/SmallCarouselView.vue'
+
+</script>
+<style scoped>
+  .header{
+    width:100%;
+    /* position:relative; */
+  }
+
+</style>
