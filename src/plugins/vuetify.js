@@ -1,17 +1,13 @@
-/**
- * plugins/vuetify.js
- *
- * Framework documentation: https://vuetifyjs.com`
- */
-
 // Styles
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 
-// Composables
+// Vuetify Composables
 import { createVuetify } from 'vuetify'
 
-// https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
+// Locale imports
+import { zhHant } from 'vuetify/locale'
+
 export default createVuetify({
   theme: {
     themes: {
@@ -21,6 +17,13 @@ export default createVuetify({
           secondary: '#5CBBF6'
         }
       }
+    }
+  },
+  // 設置locale
+  locale: {
+    defaultLocale: 'zh-Hant', // 設置預設語言為繁體中文
+    messages: {
+      'zh-Hant': zhHant // 引入繁體中文的訊息
     }
   }
 })

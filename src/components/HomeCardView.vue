@@ -17,13 +17,16 @@ alt="img"
             <MainBtnView main-btn="揪團去"></MainBtnView>
             <SubBtnView sub-btn="開團去"></SubBtnView>
         </div>
-        <div class="bottomImg" :style="{ backgroundImage: `url(${bottomImg})` }"></div>
+        <div
+class="bottomImg"
+:style="{ backgroundImage: `url(${bottomImg})` }"
+></div>
     </div>
 </template>
 <script setup>
 import MainBtnView from './btn/MainBtnView.vue'
 import SubBtnView from './btn/SubBtnView.vue'
-import CardView from './card/CardView';
+import CardView from './card/CardView'
 import { defineProps } from 'vue'
 const props = defineProps(['circleText', 'cartText', 'img', 'backgroundColor', 'bottomImg'])
 

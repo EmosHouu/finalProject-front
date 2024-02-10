@@ -1,20 +1,21 @@
-/**
- * main.js
- *
- * Bootstraps Vuetify and other plugins then mounts the App`
- */
+// main.js
 
-// Plugins
-import { registerPlugins } from '@/plugins'
-
-// Components
+// Vue
+import { createApp } from 'vue'
 import App from './App.vue'
 
-// Composables
-import { createApp } from 'vue'
+// Vuetify
+import vuetify from '@/plugins/vuetify' // 确保路径正确
+
+// 其他插件
+import { registerPlugins } from '@/plugins'
 
 const app = createApp(App)
 
+// 注册Vuetify
+app.use(vuetify)
+
+// 注册其他插件
 registerPlugins(app)
 
 app.mount('#app')
