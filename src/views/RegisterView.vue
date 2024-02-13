@@ -211,6 +211,7 @@ const closeMenu = () => {
 
 const submit = handleSubmit(async (values) => {
   try {
+    // 透過 API 送出註冊請求/users'是後端
     await api.post('/users', {
       name: values.name, // 新增姓名欄位數據
       idCard: values.idCard, // 包括身分證號碼
@@ -229,6 +230,7 @@ const submit = handleSubmit(async (values) => {
         location: 'bottom'
       }
     })
+    // 註冊成功後導向首頁這裡是前端
     router.push('/')
   } catch (error) {
     const text = error?.response?.data?.message || '發生錯誤，請稍後再試'

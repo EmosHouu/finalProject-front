@@ -182,10 +182,11 @@ prepend-icon="mdi-map-legend"
 import validator from 'validator'
 import { useForm, useField } from 'vee-validate'
 import * as yup from 'yup'
-import { api } from '@/plugins/axios'
+import { useApi } from '@/composable/axios'
 import { useRouter } from 'vue-router'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { ref, computed } from 'vue'
+const { apiAuth } = useApi()
 
 const router = useRouter()
 const createSnackbar = useSnackbar()
@@ -372,11 +373,8 @@ const { handleSubmit, isSubmitting } = useForm({
 // 定義表單欄位
 const name = useField('name')
 const location = useField('location')
-// const account = useField('account')
 const phone = useField('phone')
 const email = useField('email')
-// const password = useField('password')
-// const passwordConfirm = useField('passwordConfirm')
 const startDate = useField('startDate')
 const endDate = useField('endDate')
 // 定义开始时间和结束时间字段
@@ -389,6 +387,7 @@ const participants = useField('participants')
 const fileRecords = ref([])
 const rawFileRecords = ref([])
 // 定義表單的東東結束
+// 格式化為後端接受的格式，例如ISO字符串
 
 // 提交表單
 const submit = handleSubmit(async (values) => {
@@ -404,26 +403,14 @@ const submit = handleSubmit(async (values) => {
     fd.append('image', fileRecords.value[0].file)
 
     // 使用combineDateAndTime函數來組合日期和時間
-    const startDateTime = combineDateAndTime(values.startDate, values.startTime)
-    const endDateTime = combineDateAndTime(values.endDate, values.endTime)
+    // 使用combineDateAndTime函數來組合日期和時間
+    fd.append('startDate', combineDateAndTime(startDate.value.value, startTime.value.value).toISOString())
+    fd.append('endDate', combineDateAndTime(endDate.value.value, endTime.value.value).toISOString())
 
-    // 格式化為後端接受的格式，例如ISO字符串
-    const formattedStartDateTime = startDateTime.toISOString()
-    const formattedEndDateTime = endDateTime.toISOString()
-    await api.post('/activity', {
-      name: values.name,
-      startDate: formattedStartDateTime, // 使用格式化後的日期時間
-      endDate: formattedEndDateTime,
-      location: values.location,
-      participants: values.participants,
-      area: values.area,
-      category: values.category,
-      phone: values.phone,
-      email: values.email,
-      description: values.description
-    })
+    await apiAuth.post('/activity', fd)
+
     createSnackbar({
-      text: '註冊成功',
+      text: '新增成功',
       showCloseButton: false,
       snackbarProps: {
         timeout: 2000,

@@ -14,9 +14,12 @@ alt=""
       <div class="backgroundImg">
         <img src="../assets/山2.png" />
       </div>
-      <div class="cart">
-        <span class="mdi mdi-cart Icon"></span>
-        <p>購物車</p>
+      <div
+      class="createActivity"
+      @click="navigateToActivity"
+      >
+        <span class="mdi mdi-plus Icon"></span>
+        <p>我要開團</p>
       </div>
 
       <v-dialog
@@ -159,6 +162,11 @@ const showPopup = () => {
 
 const navigateToRegister = () => {
   router.push('/register') // 使用router.push導航到RegisterView
+  dialogVisible.value = false // 关闭弹窗
+}
+
+const navigateToActivity = () => {
+  router.push('/activity') // 使用router.push導航到RegisterView
   dialogVisible.value = false // 关闭弹窗
 }
 
@@ -322,7 +330,7 @@ const logout = async () => {
   position: relative;
 }
 
-.cart {
+.createActivity {
   position: absolute;
   right: 470px;
   top: 15px;
@@ -335,6 +343,10 @@ const logout = async () => {
   text-align: center;
   border-radius: 20px;
   box-shadow: 0px 5px 5px 2px #e5cfcf
+}
+
+.createActivity:hover {
+  cursor: pointer;
 }
 
 .member {

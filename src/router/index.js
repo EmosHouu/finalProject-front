@@ -82,6 +82,17 @@ const routes = [
         meta: {
           title: 'JPGO|好康報你知'
         }
+      },
+      {
+        path: 'activity',
+        name: 'Activity',
+        // route level code-splitting
+        // this generates a separate chunk (Home-[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import('@/views/ActivityView.vue'),
+        meta: {
+          title: 'JPGO|我要開團'
+        }
       }
     ]
   }

@@ -1,14 +1,14 @@
 <template>
-  <Header/>
+  <Header />
   <v-main>
     <routerView></routerView>
   </v-main>
-  <FooterView/>
+  <FooterView />
 </template>
 
 <script setup>
 import Header from '@/components/HeaderView.vue'
-import FooterView from '@/components/FooterView.vue';
+import FooterView from '@/components/FooterView.vue'
 </script>
 <style scoped>
 .v-main{
