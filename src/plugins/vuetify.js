@@ -6,7 +6,7 @@ import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 
 // Locale imports
-import { zhHant } from 'vuetify/locale'
+// import { zhHant } from 'vuetify/locale'
 
 export default createVuetify({
   theme: {
@@ -18,12 +18,10 @@ export default createVuetify({
         }
       }
     }
-  },
-  // 設置locale
-  locale: {
-    defaultLocale: 'zh-Hant', // 設置預設語言為繁體中文
-    messages: {
-      'zh-Hant': zhHant // 引入繁體中文的訊息
-    }
   }
+  // 設置locale
+  // locale: {
+  //   locale: 'zhHant', // 設置預設語言為繁體中文
+  //   messages: { zhHant }// 引入繁體中文的訊息
+  // }
 })

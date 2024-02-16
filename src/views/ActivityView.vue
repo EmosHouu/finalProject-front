@@ -21,10 +21,10 @@
       <VRow>
       <VCol cols="6">
       <VTextField
-      v-model="formattedStartDate"
+      :model-value="formattedStartDate"
       label="活動開始日期"
       :error-messages="startDate.errorMessage.value"
-      readonly="readonly"
+      readonly
       prepend-icon="mdi-calendar"
       @click:prepend="menuStartDate = !menuStartDate"
       ></VTextField>
@@ -58,7 +58,7 @@
 <VRow>
       <VCol cols="6">
       <VTextField
-      v-model="formattedEndDate"
+      :model-value="formattedEndDate"
       label="活動結束日期"
       :error-messages="endDate.errorMessage.value"
       readonly="readonly"
@@ -69,7 +69,7 @@
       <VDialog
       v-model="menuEndDate"
   persistent
-  max-width="290px"
+  max-width="350px"
   @click:outside="menuEndDate = false"
   >
   <VDatePicker
@@ -185,6 +185,7 @@ import * as yup from 'yup'
 import { useApi } from '@/composable/axios'
 import { useRouter } from 'vue-router'
 import { useSnackbar } from 'vuetify-use-dialog'
+import { useUserStore } from '@/store/user'
 import { ref, computed } from 'vue'
 const { apiAuth } = useApi()
 
@@ -194,6 +195,8 @@ const menuStartDate = ref(false)
 const menuEndDate = ref(false)
 const today = new Date()
 const fileAgent = ref(null)
+const user = useUserStore()
+user.getProfile()
 
 // -----日期有關的東東開始------
 
@@ -232,28 +235,20 @@ const handleDateInput = (value, field) => {
 // 格式化活动日期
 const formattedStartDate = computed(() => {
   if (!startDate.value.value) return ''
-  const localDate = new Date(startDate.value.value)
-  const year = localDate.getFullYear()
-  const month = String(localDate.getMonth() + 1).padStart(2, '0') // 月份是从0开始的
-  const day = String(localDate.getDate()).padStart(2, '0')
-  return `${year}-${month}-${day}` // 返回格式化的日期字符串
+  return startDate.value.value.toLocaleDateString()
 })
 
 const formattedEndDate = computed(() => {
   if (!endDate.value.value) return ''
-  const localDate = new Date(endDate.value.value)
-  const year = localDate.getFullYear()
-  const month = String(localDate.getMonth() + 1).padStart(2, '0') // 月份是从0开始的
-  const day = String(localDate.getDate()).padStart(2, '0')
-  return `${year}-${month}-${day}` // 返回格式化的日期字符串
+  return endDate.value.value.toLocaleDateString() // 返回格式化的日期字符串
 })
 
-function combineDateAndTime (date, time) {
-  const [year, month, day] = date.split('-').map(val => parseInt(val))
-  const [hours, minutes] = time.split(':').map(val => parseInt(val))
-  // 創建一個新的Date對象，注意月份是從0開始的，所以需要減1
-  return new Date(year, month - 1, day, hours, minutes)
-}
+// function combineDateAndTime (date, time) {
+//   const [year, month, day] = date.split('-').map(val => parseInt(val))
+//   const [hours, minutes] = time.split(':').map(val => parseInt(val))
+//   // 創建一個新的Date對象，注意月份是從0開始的，所以需要減1
+//   return new Date(year, month - 1, day, hours, minutes)
+// }
 
 // -----日期有關的東東結束------
 
@@ -352,7 +347,7 @@ const schema = yup.object({
     .string()
     .required('活動內容為必填欄位')
     .min(10, '活動內容長度不符')
-    .max(200, '活動內容長度不符')
+    .max(1000, '活動內容長度不符')
 })
 
 const { handleSubmit, isSubmitting } = useForm({
@@ -361,11 +356,11 @@ const { handleSubmit, isSubmitting } = useForm({
     name: '',
     email: '',
     phone: '',
-    price: 0,
+    // price: 0,
     description: '',
     category: '',
-    area: '',
-    sell: false
+    area: ''
+    // sell: false
   }
 
 })
@@ -397,15 +392,25 @@ const submit = handleSubmit(async (values) => {
     // 使用 fd.append(欄位, 值) 將資料放進去
     const fd = new FormData()
     for (const key in values) {
-      fd.append(key, values[key])
+      if (key === 'startDate') {
+        fd.append('startDate', formattedStartDate.value)
+      } else if (key === 'endDate') {
+        fd.append('endDate', formattedEndDate.value)
+      } else {
+        fd.append(key, values[key])
+      }
+    }
+    for (const [key, value] of fd.entries()) {
+      console.log(`${key}:`, value)
     }
 
+    fd.append('user', user._id)
     fd.append('image', fileRecords.value[0].file)
 
     // 使用combineDateAndTime函數來組合日期和時間
     // 使用combineDateAndTime函數來組合日期和時間
-    fd.append('startDate', combineDateAndTime(startDate.value.value, startTime.value.value).toISOString())
-    fd.append('endDate', combineDateAndTime(endDate.value.value, endTime.value.value).toISOString())
+    // fd.append('startDate', combineDateAndTime(startDate.value.value, startTime.value.value).toISOString())
+    // fd.append('endDate', combineDateAndTime(endDate.value.value, endTime.value.value).toISOString())
 
     await apiAuth.post('/activity', fd)
 

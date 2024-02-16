@@ -7,6 +7,7 @@ import { useApi } from '@/composable/axios'
 export const useUserStore = defineStore('user', () => {
   const { apiAuth } = useApi()
 
+  const _id = ref('')
   const token = ref('')
   const account = ref('')
   const email = ref('')
@@ -17,6 +18,7 @@ export const useUserStore = defineStore('user', () => {
     if (data.token) {
       token.value = data.token
     }
+    _id.value = data._id
     account.value = data.account
     email.value = data.email
     cart.value = data.cart
@@ -51,6 +53,7 @@ export const useUserStore = defineStore('user', () => {
   }
 
   return {
+    _id,
     token,
     account,
     email,
