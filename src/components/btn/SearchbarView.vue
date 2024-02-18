@@ -1,7 +1,15 @@
 <template>
-    <v-card class="pa-2" flat height="100px">
+    <v-card
+class="pa-2"
+flat
+height="100px"
+>
       <v-toolbar>
-        <v-text-field hide-details prepend-icon="mdi-magnify" single-line></v-text-field>
+        <v-text-field
+hide-details
+prepend-icon="mdi-magnify"
+single-line
+></v-text-field>
         <v-btn>搜尋活動</v-btn>
     <v-btn
       color="primary"
@@ -15,7 +23,7 @@
       >
         <v-card>
           <v-card-text>
-            <template>
+
   <form @submit.prevent="submit">
 
     <v-select
@@ -44,10 +52,14 @@
       clear
     </v-btn>
   </form>
-</template>
+
           </v-card-text>
           <v-card-actions>
-            <v-btn color="primary" block @click="dialog = false">Close Dialog</v-btn>
+            <v-btn
+color="primary"
+block
+@click="dialog = false"
+>Close Dialog</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -56,45 +68,43 @@
     </v-card>
 
   </template>
-  
-  <script setup>
-import { ref } from 'vue';
 
-const dialog = ref(false);
+<script setup>
+import { ref } from 'vue'
+
+const dialog = ref(false)
 
 const showPopup = () => {
-  dialog.value = true;
-};
-
+  dialog.value = true
+}
 
 const select = ref({
   value: null,
-  errorMessage: '',
-});
+  errorMessage: ''
+})
 
 const checkbox = ref({
-    value: { value: false }, // 改為初始化 value 字段
-  errorMessage: '',
-});
+  value: { value: false }, // 改為初始化 value 字段
+  errorMessage: ''
+})
 
-const items = ['Item 1', 'Item 2', 'Item 3']; // Replace with your actual items
+const items = ['Item 1', 'Item 2', 'Item 3'] // Replace with your actual items
 
 const submit = () => {
   // Add your form submission logic here
-  console.log('Form submitted');
-};
+  console.log('Form submitted')
+}
 
 const handleReset = () => {
   // Reset form fields
-  name.value = '';
-  phone.value = '';
-  email.value = '';
-  select.value = null;
-  checkbox.value = false;
-  dialog.value = false; // Close the dialog on reset
-};
+  name.value = ''
+  phone.value = ''
+  email.value = ''
+  select.value = null
+  checkbox.value = false
+  dialog.value = false // Close the dialog on reset
+}
 </script>
 <style scoped>
 
 </style>
-  
