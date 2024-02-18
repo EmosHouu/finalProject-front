@@ -1,9 +1,9 @@
 <template>
-    <div class="hashtag">{{hashtag}}</div>
+    <div class="hashtag">{{ hashtag }}</div>
 </template>
 <script setup>
-    import { defineProps } from 'vue';
-    const {hashtag} = defineProps(['hashtag']);
+import { defineProps } from 'vue'
+const { hashtag } = defineProps(['hashtag'])
 </script>
 <style scoped>
     .hashtag{

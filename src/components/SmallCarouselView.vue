@@ -1,8 +1,9 @@
 <template>
     <div class="carouselBody">
-        <v-carousel class="carousel"
+        <v-carousel
+v-model="carouselIndex"
+            class="carousel"
             height="100%"
-            v-model="carouselIndex"
             show-arrows="hover"
             hide-delimiters
             hide-delimiter-background
@@ -408,17 +409,17 @@
                         </g>
                     </svg>
                 </div>
-                <div class="title">{{title}}</div>
+                <div class="title">{{ title }}</div>
             </v-carousel-item>
         </v-carousel>
         <div class="curve">
-            <img src="../assets/波浪間隔.png"/>
+            <img src="../assets/波浪間隔.png" />
         </div>
 
     </div>
 </template>
 <script setup>
-import { ref, defineProps } from 'vue';
+import { ref, defineProps } from 'vue'
 const { title } = defineProps(['title'])
 
 const carouselIndex = ref(0)

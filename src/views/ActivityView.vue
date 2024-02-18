@@ -151,6 +151,7 @@ prepend-icon="mdi-map-legend"
       ref="fileAgent"
       v-model="fileRecords"
       v-model:rawModelValue="rawFileRecords"
+      multiple="true"
       accept="image/jpeg,image/png"
       deletable="deletable"
       :error-text="{type: '檔案格式不支援', size: '檔案超過 1MB 大小限制'}"
@@ -403,10 +404,15 @@ const submit = handleSubmit(async (values) => {
     for (const [key, value] of fd.entries()) {
       console.log(`${key}:`, value)
     }
-
+    // 添加用戶ID
     fd.append('user', user._id)
-    fd.append('image', fileRecords.value[0].file)
+    // 傳送圖片，後端middlewares 好像要改upload
+    fd.append('images', fileRecords.value[0].file)
 
+    // fileRecords.value.forEach((fileRecord, index) => {
+    //   fd.append(`images[${index}]`, fileRecord.file)
+    // })
+    console.log(fileRecords.value)
     // 使用combineDateAndTime函數來組合日期和時間
     // 使用combineDateAndTime函數來組合日期和時間
     // fd.append('startDate', combineDateAndTime(startDate.value.value, startTime.value.value).toISOString())
