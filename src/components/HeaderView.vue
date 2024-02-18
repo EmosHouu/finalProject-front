@@ -5,6 +5,7 @@
 class="temple"
 src="../assets/鳥居4.png"
 />
+<img class="logo" src="../assets/logo3.png"/>
       <img
 class="sun"
 src="../assets/太陽.png"
@@ -304,6 +305,11 @@ const logout = async () => {
   position: absolute;
   top: 15px;
   left: 100px;
+}
+.logo{
+  position: absolute;
+  top: -15px;
+  left: 270px;
 }
 
 .sun {

@@ -1,6 +1,7 @@
 <template>
   <div class="header">
     <SmallCarouselView :title="'揪團玩'"></SmallCarouselView>
+    <SearchbarView></SearchbarView>
   </div>
   <div class="body">
     <SectionView :fill="'#FFD4C0'" :text="'熱門揪團活動'"></SectionView>
@@ -12,6 +13,7 @@
 import SmallCarouselView from '../components/SmallCarouselView.vue';
 import CardDetailView from '@/components/card/CardDetailView.vue';
 import SectionView from '@/components/SectionView.vue';
+import SearchbarView from '@/components/btn/SearchbarView.vue';
 
 </script>
 <style scoped>
