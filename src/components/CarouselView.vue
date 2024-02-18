@@ -1,6 +1,7 @@
 <template>
-    <v-carousel class="carousel"
-        v-model="carouselIndex"
+    <v-carousel
+v-model="carouselIndex"
+        class="carousel"
         show-arrows="hover"
         hide-delimiters
         hide-delimiter-background
@@ -409,7 +410,7 @@ class="hokkaido mapSection"
         </v-carousel-item>
     </v-carousel>
     <div class="curve">
-        <img src="../assets/波浪間隔.png"/>
+        <img src="../assets/波浪間隔.png" />
     </div>
 </template>
 <script setup>
