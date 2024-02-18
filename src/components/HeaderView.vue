@@ -55,26 +55,26 @@ v-bind="props"
           :disabled="isSubmitting"
           @submit.prevent="submit"
           >
-<br>
-<VTextField
-v-model="account.value.value"
-class="custom-text-field"
-label="帳號"
-minlength="4"
-maxlength="20"
-counter="counter"
-:error-messages="account.errorMessage.value"
-></VTextField>
-<VTextField
-v-model="password.value.value"
-class="custom-text-field"
-label="密碼"
-type="password"
-minlength="4"
-maxlength="20"
-counter="counter"
-:error-messages="password.errorMessage.value"
-></VTextField>
+          <br>
+          <VTextField
+          v-model="account.value.value"
+          class="custom-text-field"
+          label="帳號"
+          minlength="4"
+          maxlength="20"
+          counter="counter"
+          :error-messages="account.errorMessage.value"
+          ></VTextField>
+          <VTextField
+          v-model="password.value.value"
+          class="custom-text-field"
+          label="密碼"
+          type="password"
+          minlength="4"
+          maxlength="20"
+          counter="counter"
+          :error-messages="password.errorMessage.value"
+          ></VTextField>
 
           <div class="button-container">
             <VBtn
