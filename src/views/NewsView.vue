@@ -5,9 +5,9 @@
     cols="12"
     md="8"
     >
-      <VCard color="#FFEFE8">
+      <!-- <VCard color="#FFEFE8">
         <VCardTitle>
-          <h2>活動照片預覽</h2>
+          <h2>{{ name }}</h2>
         </VCardTitle>
         <v-carousel
         show-arrows="hover"
@@ -28,7 +28,8 @@
             cover
           ></v-carousel-item>
         </v-carousel>
-      </VCard>
+      </VCard> -->
+      <CardActPhotoView :name="activityName" />
     </VCol>
 
     <VCol
@@ -40,7 +41,7 @@ height="100%"
 color="#FFEFE8"
 >
         <VCardTitle>
-          <h2>活動名稱</h2>
+          <h2>{{ eventName }}</h2>
         </VCardTitle>
         <VCardText>
           <div class="description">
@@ -150,7 +151,41 @@ class="flex-grow-1 d-flex align-center justify-center"
 
 <script setup>
 import TagView from '../components/hashtag/TagView.vue'
+import CardActPhotoView from '@/components/card/CardActPhotoView.vue'
+import { ref, onMounted, computed } from 'vue'
+import { useApi } from '@/composable/axios'
+import { useSnackbar } from 'vuetify-use-dialog'
+// import gsap from 'gsap'
+// const eventName = ref('') // 使用ref來創建響應式數據
+const { api } = useApi()
+const createSnackbar = useSnackbar()
+const activity = ref([])
+
+const activityName = computed(() => {
+  return activity.value.length > 0 ? activity.value[0].name : ''
+})
+
+onMounted(async () => {
+  try {
+    const { data } = await api.get('/activity')
+    console.log(data) // 查看完整的响应体
+    activity.value.push(...data.result.data)
+  } catch (error) {
+    console.log(error)
+    const text = error?.response?.data?.message || '發生錯誤，請稍後再試'
+    createSnackbar({
+      text,
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'red',
+        location: 'bottom'
+      }
+    })
+  }
+})
 </script>
+
 <style scoped>
   .header{
     width:100%;
