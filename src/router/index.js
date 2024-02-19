@@ -93,6 +93,17 @@ const routes = [
         meta: {
           title: 'JPGO|我要開團'
         }
+      },
+      {
+        path: 'vip',
+        name: 'VIP',
+        // route level code-splitting
+        // this generates a separate chunk (Home-[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import('@/views/VipView.vue'),
+        meta: {
+          title: 'JPGO|我要開團'
+        }
       }
     ]
   }

@@ -5,7 +5,10 @@
 class="temple"
 src="../assets/鳥居4.png"
 />
-<img class="logo" src="../assets/logo3.png"/>
+<img
+class="logo"
+src="../assets/logo3.png"
+/>
       <img
 class="sun"
 src="../assets/太陽.png"
@@ -117,7 +120,7 @@ align-tabs="title"
 v-for="item in items"
 :key="item"
 :value="item"
-@click="item === '首頁' ? navigateToHome() : item === '揪團玩' ? navigateToPlay() : item === '揪團行' ? navigateToDrive(): item ==='揪團買'?navigateToBuy() : item === '揪團住'? navigateToHotel() : item === '好康報你知'? navigateToNews() : null "
+@click="item === '首頁' ? navigateToHome() : item === '揪團玩' ? navigateToPlay() : item === '揪團行' ? navigateToDrive(): item ==='揪團買'?navigateToBuy() : item === '揪團住'? navigateToHotel() : item === '好康報你知'? navigateToNews() :item === '會員中心'? navigateToVIP(): null "
 >
             {{ item }}
           </v-tab>
@@ -153,7 +156,7 @@ const { api, apiAuth } = useApi()
 const user = useUserStore()
 
 const tab = ref(null)
-const items = ['首頁', '揪團玩', '揪團行', '揪團買', '揪團住', '好康報你知']
+const items = ['首頁', '揪團玩', '揪團行', '揪團買', '揪團住', '好康報你知', '會員中心']
 
 const dialogVisible = ref(false) // 控制弹窗显示的响应式变量
 
@@ -219,6 +222,10 @@ const navigateToHotel = () => {
 
 const navigateToNews = () => {
   router.push('/news') // 导航到 driveView
+}
+
+const navigateToVIP = () => {
+  router.push('/vip') // vip
 }
 // 頁面跳轉區結束
 

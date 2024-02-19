@@ -156,7 +156,7 @@ prepend-icon="mdi-map-legend"
       deletable="deletable"
       :error-text="{type: '檔案格式不支援', size: '檔案超過 1MB 大小限制'}"
       help-text="選擇檔案或拖曳到這裡"
-      :max-files="5"
+      :max-files="3"
       max-size="1MB"
       ></VueFileAgent>
 
@@ -407,12 +407,12 @@ const submit = handleSubmit(async (values) => {
     // 添加用戶ID
     fd.append('user', user._id)
     // 傳送圖片，後端middlewares 好像要改upload
-    fd.append('images', fileRecords.value[0].file)
-
-    // fileRecords.value.forEach((fileRecord, index) => {
-    //   fd.append(`images[${index}]`, fileRecord.file)
-    // })
-    console.log(fileRecords.value)
+    // fd.append('images', fileRecords.value[0].file)
+    if (fileRecords.value.length > 0) {
+      for (const file of fileRecords.value) {
+        fd.append('images', file.file)
+      }
+    }
     // 使用combineDateAndTime函數來組合日期和時間
     // 使用combineDateAndTime函數來組合日期和時間
     // fd.append('startDate', combineDateAndTime(startDate.value.value, startTime.value.value).toISOString())
