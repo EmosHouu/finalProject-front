@@ -30,16 +30,18 @@ single-line
       v-model="select.value"
       :items="items"
       :error-messages="select.errorMessage.value"
-      label="Select"
+      label="選擇地區"
+    ></v-select>
+    <v-select
+      v-model="select.value"
+      :items="options"
+      :error-messages="select.errorMessage.value"
+      label="選擇分類"
     ></v-select>
 
-    <v-checkbox
-      v-model="checkbox.value"
-      :error-messages="checkbox.errorMessage.value"
-      value="1"
-      label="Option"
-      type="checkbox"
-    ></v-checkbox>
+    
+
+
 
     <v-btn
       class="me-4"
@@ -88,7 +90,8 @@ const checkbox = ref({
   errorMessage: ''
 })
 
-const items = ['Item 1', 'Item 2', 'Item 3'] // Replace with your actual items
+const items = ['北海道', '東北', '關東', '中部', '近畿', '中國'] 
+const options = ['揪團玩', '揪團行', '揪團住', '揪團買'] 
 
 const submit = () => {
   // Add your form submission logic here
