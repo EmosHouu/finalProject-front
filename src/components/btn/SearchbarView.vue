@@ -100,9 +100,6 @@ const submit = () => {
 
 const handleReset = () => {
   // Reset form fields
-  name.value = ''
-  phone.value = ''
-  email.value = ''
   select.value = null
   checkbox.value = false
   dialog.value = false // Close the dialog on reset
