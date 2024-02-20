@@ -29,7 +29,7 @@
           ></v-carousel-item>
         </v-carousel>
       </VCard> -->
-      <CardActPhotoView :name="activityName" />
+      <CardActPhotoView />
     </VCol>
 
     <VCol
@@ -41,7 +41,7 @@ height="100%"
 color="#FFEFE8"
 >
         <VCardTitle>
-          <h2>{{ eventName }}</h2>
+          <!-- <h2>{{ eventName }}</h2> -->
         </VCardTitle>
         <VCardText>
           <div class="description">
@@ -146,30 +146,43 @@ class="flex-grow-1 d-flex align-center justify-center"
       </VCol>
 
   </VRow>
+  <br>
+
+</VContainer>
+
+<VContainer>
+    <VRow>
+        <VCol
+        v-for="activity in activities"
+        :key="activity._id"
+        cols="12"
+        md="6"
+        lg="3"
+        >
+        <CardHomeView v-bind="activity"></CardHomeView>
+        </VCol>
+    </VRow>
 </VContainer>
 </template>
 
 <script setup>
 import TagView from '../components/hashtag/TagView.vue'
 import CardActPhotoView from '@/components/card/CardActPhotoView.vue'
-import { ref, onMounted, computed } from 'vue'
+import CardHomeView from '@/components/card/CardHomeView.vue'
+import { ref, onMounted, nextTick } from 'vue'
 import { useApi } from '@/composable/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 // import gsap from 'gsap'
-// const eventName = ref('') // 使用ref來創建響應式數據
 const { api } = useApi()
 const createSnackbar = useSnackbar()
-const activity = ref([])
-
-const activityName = computed(() => {
-  return activity.value.length > 0 ? activity.value[0].name : ''
-})
+const activities = ref([])
 
 onMounted(async () => {
   try {
     const { data } = await api.get('/activity')
     console.log(data) // 查看完整的响应体
-    activity.value.push(...data.result.data)
+    activities.value.push(...data.result.data)
+    await nextTick()
   } catch (error) {
     console.log(error)
     const text = error?.response?.data?.message || '發生錯誤，請稍後再試'

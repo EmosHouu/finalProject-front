@@ -28,5 +28,5 @@
 <script setup>
 import { defineProps } from 'vue'
 const props = defineProps(['_id', 'user', 'image', 'name'])
-console.log(props.name) // 查看是否能够获取到name的值
+// console.log(props.name) // 查看是否能够获取到name的值
 </script>
