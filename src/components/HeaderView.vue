@@ -98,13 +98,22 @@ v-bind="props"
         </template>
       </v-dialog>
       <div
-v-if="user.isLogin"
-class="member"
-@click="logout"
->
-            <span class="mdi mdi-logout Icon"></span>
-            <p>登出</p>
-          </div>
+      v-if="user.isLogin"
+      class="member"
+      @click="logout"
+      >
+      <span class="mdi mdi-logout Icon"></span>
+      <p>登出</p>
+      </div>
+
+      <!-- <div
+      v-if="user.isLogin"
+      class="vip"
+      @click="vipPage"
+      >
+      <span class="mdi mdi-account Icon"></span>
+      <p>會員中心</p>
+      </div> -->
     </div>
 
     <v-toolbar

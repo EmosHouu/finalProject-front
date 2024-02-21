@@ -1,9 +1,9 @@
 <template>
-    <div class="btn1">{{mainBtn}}</div>
+    <div class="btn1">{{ mainBtn }}</div>
 </template>
 <script setup>
-    import { defineProps } from 'vue';
-    const { mainBtn } = defineProps(['mainBtn']);
+import { defineProps } from 'vue'
+const { mainBtn } = defineProps(['mainBtn'])
 </script>
 <style scoped>
     .btn1{
