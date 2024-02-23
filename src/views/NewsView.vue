@@ -167,8 +167,8 @@ class="flex-grow-1 d-flex align-center justify-center"
 </template>
 
 <script setup>
-import TagView from '../components/hashtag/TagView.vue'
-import CardActPhotoView from '@/components/card/CardActPhotoView.vue'
+// import TagView from '../components/hashtag/TagView.vue'
+// import CardActPhotoView from '@/components/card/CardActPhotoView.vue'
 import CardHomeView from '@/components/card/CardHomeView.vue'
 import { ref, onMounted, nextTick } from 'vue'
 import { useApi } from '@/composable/axios'
@@ -205,6 +205,7 @@ onMounted(async () => {
 
     console.log(data) // 查看完整的响应体
     activities.value.push(...data.result.data)
+    console.log('activities', activities.value)
     await nextTick()
   } catch (error) {
     console.log(error)

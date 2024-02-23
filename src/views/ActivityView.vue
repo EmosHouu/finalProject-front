@@ -10,7 +10,7 @@
       :disabled="isSubmitting"
       @submit.prevent="submit"
       >
-
+            {{ errors }}
       <VTextField
       v-model="name.value.value"
       label="活動名稱"
@@ -351,7 +351,7 @@ const schema = yup.object({
     .max(1000, '活動內容長度不符')
 })
 
-const { handleSubmit, isSubmitting } = useForm({
+const { handleSubmit, isSubmitting, errors } = useForm({
   validationSchema: schema,
   initialValues: {
     name: '',
@@ -360,7 +360,11 @@ const { handleSubmit, isSubmitting } = useForm({
     // price: 0,
     description: '',
     category: '',
-    area: ''
+    area: '',
+    startDate: '',
+    startTime: '',
+    endDate: '',
+    endTime: ''
     // sell: false
   }
 

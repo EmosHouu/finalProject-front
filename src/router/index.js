@@ -124,5 +124,8 @@ router.beforeEach((to, from, next) => {
   }
   next()
 })
+// if (from === START_LOCATION) {
+//   await user.getProfile()
+// }
 
 export default router
