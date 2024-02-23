@@ -431,15 +431,16 @@ const hoveredIndex = ref(null)
 // ]
 
 const carouselItems = ref([
-  { src: '/assets/北海道風景.jpeg' },
-  { src: '/assets/東北風景.jpeg' },
-  { src: '/assets/關東風景.jpeg' },
-  { src: '/assets/中部風景.jpeg' },
-  { src: '/assets/近畿地區風景.webp' },
-  { src: '/assets/四國地區風景.jpeg' },
-  { src: '/assets/九州風景.jpeg' },
-  { src: '/assets/中國地區風景.png' }
+  { src: '/北海道風景.jpeg' },
+  { src: '/東北風景.jpeg' },
+  { src: '/關東風景.jpeg' },
+  { src: '/中部風景.jpeg' },
+  { src: '/近畿地區風景.webp' },
+  { src: '/四國地區風景.jpeg' },
+  { src: '/九州風景.jpeg' },
+  { src: '/中國地區風景.png' }
 ])
+
 // const changeCarouselItem = (event) => {
 //   const targetClass = event.target.getAttribute('class');
 //   const index = event.target.dataset.index;
