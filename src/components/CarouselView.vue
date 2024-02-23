@@ -419,17 +419,27 @@ import { ref } from 'vue'
 const carouselIndex = ref(0)
 const hoveredIndex = ref(null)
 
-const carouselItems = [
-  { src: './src/assets/北海道風景.jpeg' },
-  { src: './src/assets/東北風景.jpeg' },
-  { src: './src/assets/關東風景.jpeg' },
-  { src: './src/assets/中部風景.jpeg' },
-  { src: './src/assets/近畿地區風景.webp' },
-  { src: './src/assets/四國地區風景.jpeg' },
-  { src: './src/assets/九州風景.jpeg' },
-  { src: './src/assets/中國地區風景.png' }
-]
+// const carouselItems = [
+//   { src: './src/assets/北海道風景.jpeg' },
+//   { src: './src/assets/東北風景.jpeg' },
+//   { src: './src/assets/關東風景.jpeg' },
+//   { src: './src/assets/中部風景.jpeg' },
+//   { src: './src/assets/近畿地區風景.webp' },
+//   { src: './src/assets/四國地區風景.jpeg' },
+//   { src: './src/assets/九州風景.jpeg' },
+//   { src: './src/assets/中國地區風景.png' }
+// ]
 
+const carouselItems = ref([
+  { src: '/assets/北海道風景.jpeg' },
+  { src: '/assets/東北風景.jpeg' },
+  { src: '/assets/關東風景.jpeg' },
+  { src: '/assets/中部風景.jpeg' },
+  { src: '/assets/近畿地區風景.webp' },
+  { src: '/assets/四國地區風景.jpeg' },
+  { src: '/assets/九州風景.jpeg' },
+  { src: '/assets/中國地區風景.png' }
+])
 // const changeCarouselItem = (event) => {
 //   const targetClass = event.target.getAttribute('class');
 //   const index = event.target.dataset.index;
