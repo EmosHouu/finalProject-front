@@ -410,7 +410,7 @@ class="hokkaido mapSection"
         </v-carousel-item>
     </v-carousel>
     <div class="curve">
-        <img src="../assets/波浪間隔.png" />
+        <img src="https://github.com/EmosHouu/finalProject-front/blob/main/src/assets/%E6%B3%A2%E6%B5%AA%E9%96%93%E9%9A%94.png?raw=true" />
     </div>
 </template>
 <script setup>
@@ -419,27 +419,27 @@ import { ref } from 'vue'
 const carouselIndex = ref(0)
 const hoveredIndex = ref(null)
 
-// const carouselItems = [
-//   { src: './src/assets/北海道風景.jpeg' },
-//   { src: './src/assets/東北風景.jpeg' },
-//   { src: './src/assets/關東風景.jpeg' },
-//   { src: './src/assets/中部風景.jpeg' },
-//   { src: './src/assets/近畿地區風景.webp' },
-//   { src: './src/assets/四國地區風景.jpeg' },
-//   { src: './src/assets/九州風景.jpeg' },
-//   { src: './src/assets/中國地區風景.png' }
-// ]
+const carouselItems = [
+  { src: 'https://github.com/EmosHouu/finalProject-front/blob/main/src/assets/%E5%8C%97%E6%B5%B7%E9%81%93%E9%A2%A8%E6%99%AF.jpeg?raw=true' },
+  { src: 'https://github.com/EmosHouu/finalProject-front/blob/main/src/assets/%E6%9D%B1%E5%8C%97%E9%A2%A8%E6%99%AF.jpeg?raw=true' },
+  { src: 'https://github.com/EmosHouu/finalProject-front/blob/main/src/assets/%E9%97%9C%E6%9D%B1%E9%A2%A8%E6%99%AF.jpeg?raw=true' },
+  { src: 'https://github.com/EmosHouu/finalProject-front/blob/main/src/assets/%E4%B8%AD%E9%83%A8%E9%A2%A8%E6%99%AF.jpeg?raw=true' },
+  { src: 'https://raw.githubusercontent.com/EmosHouu/finalProject-front/main/src/assets/%E8%BF%91%E7%95%BF%E5%9C%B0%E5%8D%80%E9%A2%A8%E6%99%AF.webp' },
+  { src: 'https://github.com/EmosHouu/finalProject-front/blob/main/src/assets/%E5%9B%9B%E5%9C%8B%E5%9C%B0%E5%8D%80%E9%A2%A8%E6%99%AF.jpeg?raw=true' },
+  { src: 'https://github.com/EmosHouu/finalProject-front/blob/main/src/assets/%E4%B9%9D%E5%B7%9E%E9%A2%A8%E6%99%AF.jpeg?raw=true' },
+  { src: 'https://github.com/EmosHouu/finalProject-front/blob/main/src/assets/%E4%B8%AD%E5%9C%8B%E5%9C%B0%E5%8D%80%E9%A2%A8%E6%99%AF.png?raw=true' }
+]
 
-const carouselItems = ref([
-  { src: '/北海道風景.jpeg' },
-  { src: '/東北風景.jpeg' },
-  { src: '/關東風景.jpeg' },
-  { src: '/中部風景.jpeg' },
-  { src: '/近畿地區風景.webp' },
-  { src: '/四國地區風景.jpeg' },
-  { src: '/九州風景.jpeg' },
-  { src: '/中國地區風景.png' }
-])
+// const carouselItems = ref([
+//   { src: '/北海道風景.jpeg' },
+//   { src: '/東北風景.jpeg' },
+//   { src: '/關東風景.jpeg' },
+//   { src: '/中部風景.jpeg' },
+//   { src: '/近畿地區風景.webp' },
+//   { src: '/四國地區風景.jpeg' },
+//   { src: '/九州風景.jpeg' },
+//   { src: '/中國地區風景.png' }
+// ])
 
 // const changeCarouselItem = (event) => {
 //   const targetClass = event.target.getAttribute('class');
