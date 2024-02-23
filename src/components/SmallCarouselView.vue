@@ -426,14 +426,14 @@ const carouselIndex = ref(0)
 const hoveredIndex = ref(null)
 
 const carouselItems = [
-  { src: './src/assets/北海道風景.jpeg' },
-  { src: './src/assets/東北風景.jpeg' },
-  { src: './src/assets/關東風景.jpeg' },
-  { src: './src/assets/中部風景.jpeg' },
-  { src: './src/assets/近畿地區風景.webp' },
-  { src: './src/assets/四國地區風景.jpeg' },
-  { src: './src/assets/九州風景.jpeg' },
-  { src: './src/assets/中國地區風景.png' }
+  { src: 'https://github.com/EmosHouu/finalProject-front/blob/main/src/assets/%E5%8C%97%E6%B5%B7%E9%81%93%E9%A2%A8%E6%99%AF.jpeg?raw=true' },
+  { src: 'https://github.com/EmosHouu/finalProject-front/blob/main/src/assets/%E6%9D%B1%E5%8C%97%E9%A2%A8%E6%99%AF.jpeg?raw=true' },
+  { src: 'https://github.com/EmosHouu/finalProject-front/blob/main/src/assets/%E9%97%9C%E6%9D%B1%E9%A2%A8%E6%99%AF.jpeg?raw=true' },
+  { src: 'https://github.com/EmosHouu/finalProject-front/blob/main/src/assets/%E4%B8%AD%E9%83%A8%E9%A2%A8%E6%99%AF.jpeg?raw=true' },
+  { src: 'https://raw.githubusercontent.com/EmosHouu/finalProject-front/main/src/assets/%E8%BF%91%E7%95%BF%E5%9C%B0%E5%8D%80%E9%A2%A8%E6%99%AF.webp' },
+  { src: 'https://github.com/EmosHouu/finalProject-front/blob/main/src/assets/%E5%9B%9B%E5%9C%8B%E5%9C%B0%E5%8D%80%E9%A2%A8%E6%99%AF.jpeg?raw=true' },
+  { src: 'https://github.com/EmosHouu/finalProject-front/blob/main/src/assets/%E4%B9%9D%E5%B7%9E%E9%A2%A8%E6%99%AF.jpeg?raw=true' },
+  { src: 'https://github.com/EmosHouu/finalProject-front/blob/main/src/assets/%E4%B8%AD%E5%9C%8B%E5%9C%B0%E5%8D%80%E9%A2%A8%E6%99%AF.png?raw=true' }
 ]
 
 const changeCarouselItem = (index) => {
