@@ -100,8 +100,7 @@ color="#FFEFE8"
   <VRow>
     <VCol
     cols="12"
-    md="8"
-    >
+>
       <VCard
       color="#FFEFE8"
       >
@@ -116,33 +115,9 @@ class="description"
         </VCardText>
       </VCard>
     </VCol>
-    <VCol
-cols="12"
-md="4"
-class="d-flex flex-column"
->
-        <VCard
-color="#FFEFE8"
-class="mb-4 flex-grow-1 d-flex align-center justify-center"
->
-
-          <VImg src="https://cdn.vuetifyjs.com/images/cards/hotel.jpg"></VImg>
-        </VCard>
-        <VCard
-color="#FFEFE8"
-class="mb-4 flex-grow-1 d-flex align-center justify-center"
->
-          <VImg src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"></VImg>
-        </VCard>
-        <VCard
-color="#FFEFE8"
-class="flex-grow-1 d-flex align-center justify-center"
->
-          <VImg src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"></VImg>
-        </VCard>
-      </VCol>
 
   </VRow>
+
   <br>
 
 </VContainer>
@@ -159,7 +134,7 @@ class="flex-grow-1 d-flex align-center justify-center"
         md="3"
         lg="3"
         >
-        <CardHomeView v-bind="activity"></CardHomeView>
+        <CardActDetailView v-bind="activity"></CardActDetailView>
         </VCol>
 
     </VRow>
@@ -169,10 +144,11 @@ class="flex-grow-1 d-flex align-center justify-center"
 <script setup>
 // import TagView from '../components/hashtag/TagView.vue'
 // import CardActPhotoView from '@/components/card/CardActPhotoView.vue'
-import CardHomeView from '@/components/card/CardHomeView.vue'
+import CardActDetailView from '@/components/card/CardActDetailView.vue'
 import { ref, onMounted, nextTick } from 'vue'
 import { useApi } from '@/composable/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
+import { useRoute } from 'vue-router'
 // import gsap from 'gsap'
 const { api } = useApi()
 const createSnackbar = useSnackbar()
@@ -188,10 +164,12 @@ const participants = ref('')
 const location = ref('')
 const category = ref('')
 const area = ref('')
+const route = useRoute()
 onMounted(async () => {
   try {
-    const { data } = await api.get('/activity')
+    const { data } = await api.get('/activity/')
     name.value = data.result.data[0].name
+    // topImages.value = data.result.data[1].images
     images.value = data.result.data[0].images
     startDate.value = data.result.data[0].startDate
     endDate.value = data.result.data[0].endDate
@@ -203,9 +181,14 @@ onMounted(async () => {
     category.value = data.result.data[0].category
     area.value = data.result.data[0].area
 
-    console.log(data) // 查看完整的响应体
-    activities.value.push(...data.result.data)
-    console.log('activities', activities.value)
+    // console.log(data) // 查看完整的响应体
+    // activities.value.push(...data.result.data)
+    // console.log('activities', activities.value)
+    // Filter out the activity with the same images as the top carousel
+    const filteredActivities = data.result.data.filter(activity => !arraysEqual(activity.images, images.value))
+
+    activities.value.push(...filteredActivities)
+
     await nextTick()
   } catch (error) {
     console.log(error)
@@ -221,6 +204,20 @@ onMounted(async () => {
     })
   }
 })
+
+function arraysEqual (a, b) {
+  if (a === b) return true
+  if (a == null || b == null) return false
+  if (a.length !== b.length) return false
+
+  a.sort()
+  b.sort()
+
+  for (let i = 0; i < a.length; ++i) {
+    if (a[i] !== b[i]) return false
+  }
+  return true
+}
 </script>
 
 <style scoped>
