@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-b1ae58c9.js";import{A as s,N as t,P as _}from"./index-636f0195.js";const o={class:"hashtag"},c={__name:"TagView",props:["hashtag"],setup(a){return(n,r)=>(s(),t("div",o,_(a.hashtag),1))}},g=e(c,[["__scopeId","data-v-54a5409e"]]);export{g as T};
