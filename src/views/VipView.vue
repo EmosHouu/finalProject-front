@@ -4,7 +4,11 @@
       <v-toolbar-title>User Profile</v-toolbar-title>
     </v-toolbar>
     <div class="d-flex flex-row">
-      <v-tabs v-model="tab" direction="vertical" color="primary">
+      <v-tabs
+v-model="tab"
+direction="vertical"
+color="primary"
+>
         <v-tab value="option-1">
           <v-icon start>
             mdi-account
@@ -26,10 +30,10 @@
       </v-tabs>
       <v-window v-model="tab">
         <v-window-item value="option-1">
-            <ActivityManageView/>
+            <ActivityManageView />
         </v-window-item>
         <v-window-item value="option-2">
-            <SignupActivityView/>
+            <SignupActivityView />
         </v-window-item>
         <v-window-item value="option-3">
           <v-card flat>
@@ -47,6 +51,7 @@
       </v-window>
     </div>
   </v-card>
+  {{ name }}
 </template>
 
 <script setup>
@@ -55,5 +60,6 @@ import SignupActivityView from '@/components/member/SignupActivityView.vue'
 import { ref } from 'vue'
 
 const tab = ref('option-1')
-</script>
+const name = ref('')
 
+</script>
