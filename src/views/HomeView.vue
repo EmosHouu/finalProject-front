@@ -3,18 +3,23 @@
 <div class="cardBody">
   <div class="bg">
         <div
-          class="circle" style="background-color:#FFD4C0"
+          class="circle"
+style="background-color:#FFD4C0"
           >揪團玩</div>
                   <div class="text">想找人一起出去玩卻總是跟朋友時間喬不攏嘛？一起「揪團玩」來看看現在有哪些團可以跟吧！</div>
-                  <div class="img"><img src="https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E9%B3%A5%E5%B1%853.png?raw=true" alt="img"/></div>
+                  <div class="img"><img
+src="https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E9%B3%A5%E5%B1%853.png?raw=true"
+alt="img"
+/></div>
         <div class="card">
-            <CardView 
-              v-for="activity in activities" 
-              :key="activity._id" 
-              :area="activity.area" 
-              :location="activity.area" 
+            <CardView
+              v-for="activity in activities.slice(0, 2)"
+              :key="activity._id"
+              :area="activity.area"
+              :location="activity.area"
               :category="activity.category"
-              :images="activity.images"></CardView>
+              :images="activity.images"
+></CardView>
         </div>
         <div class="btn">
             <MainBtnView main-btn="揪團去"></MainBtnView>
@@ -27,18 +32,23 @@
     </div>
   <div class="bg">
         <div
-          class="circle" style="background-color:#FFB077"
+          class="circle"
+style="background-color:#FFB077"
           >揪團行</div>
                   <div class="text">在日本一個人租車擔心太貴嗎？一起「揪團行」找夥伴一起租車吧 !</div>
-                  <div class="img"><img src="https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/bicycle.png?raw=true" alt="img"/></div>
+                  <div class="img"><img
+src="https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/bicycle.png?raw=true"
+alt="img"
+/></div>
         <div class="card">
-            <CardView 
-              v-for="activity in activities" 
-              :key="activity._id" 
-              :area="activity.area" 
-              :location="activity.area" 
+            <CardView
+              v-for="activity in activities"
+              :key="activity._id"
+              :area="activity.area"
+              :location="activity.area"
               :category="activity.category"
-              :images="activity.images"></CardView>
+              :images="activity.images"
+></CardView>
         </div>
         <div class="btn">
             <MainBtnView main-btn="揪團去"></MainBtnView>
@@ -51,18 +61,23 @@
     </div>
     <div class="bg">
         <div
-          class="circle" style="background-color:#FFD4C0"
+          class="circle"
+style="background-color:#FFD4C0"
           >揪團買</div>
                   <div class="text">想找人一起湊免稅免運嗎？一起「揪團買」來看看現在有哪些團可以跟吧！</div>
-                  <div class="img"><img src="https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/shop.png?raw=true" alt="img"/></div>
+                  <div class="img"><img
+src="https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/shop.png?raw=true"
+alt="img"
+/></div>
         <div class="card">
-            <CardView 
-              v-for="activity in activities" 
-              :key="activity._id" 
-              :area="activity.area" 
-              :location="activity.area" 
+            <CardView
+              v-for="activity in activities"
+              :key="activity._id"
+              :area="activity.area"
+              :location="activity.area"
               :category="activity.category"
-              :images="activity.images"></CardView>
+              :images="activity.images"
+></CardView>
         </div>
         <div class="btn">
             <MainBtnView main-btn="揪團去"></MainBtnView>
@@ -75,18 +90,23 @@
     </div>
     <div class="bg">
         <div
-          class="circle" style="background-color:#FFB077"
+          class="circle"
+style="background-color:#FFB077"
           >揪團住</div>
                   <div class="text">想要找便宜的床位嗎？一起「揪團住」來看看有哪些房間有優惠吧！</div>
-                  <div class="img"><img src="https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/bed.png?raw=true" alt="img"/></div>
+                  <div class="img"><img
+src="https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/bed.png?raw=true"
+alt="img"
+/></div>
         <div class="card">
-            <CardView 
-              v-for="activity in activities" 
-              :key="activity._id" 
-              :area="activity.area" 
-              :location="activity.area" 
+            <CardView
+              v-for="activity in activities"
+              :key="activity._id"
+              :area="activity.area"
+              :location="activity.area"
               :category="activity.category"
-              :images="activity.images"></CardView>
+              :images="activity.images"
+></CardView>
         </div>
         <div class="btn">
             <MainBtnView main-btn="揪團去"></MainBtnView>
@@ -106,13 +126,10 @@ import { useApi } from '@/composable/axios'
 import { useUserStore } from '@/store/user'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useRouter } from 'vue-router'
-import HomeCardViewVue from '@/components/HomeCardView.vue'
 import MainBtnView from '@/components/btn/MainBtnView.vue'
 import SubBtnView from '@/components/btn/SubBtnView.vue'
 import CardView from '@/components/card/CardView.vue'
 import { ref, onMounted, nextTick } from 'vue'
-import { useApi } from '@/composable/axios'
-import { useSnackbar } from 'vuetify-use-dialog'
 const { api } = useApi()
 const createSnackbar = useSnackbar()
 const activities = ref([])
