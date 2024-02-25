@@ -98,10 +98,14 @@
           ></div>
     </div>
   </div>
+
 </template>
 
 <script setup>
-import CarouselView from '@/components/CarouselView.vue'
+import { useApi } from '@/composable/axios'
+import { useUserStore } from '@/store/user'
+import { useSnackbar } from 'vuetify-use-dialog'
+import { useRouter } from 'vue-router'
 import HomeCardViewVue from '@/components/HomeCardView.vue'
 import MainBtnView from '@/components/btn/MainBtnView.vue'
 import SubBtnView from '@/components/btn/SubBtnView.vue'

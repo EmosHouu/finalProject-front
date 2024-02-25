@@ -14,11 +14,14 @@ hide-delimiter-background
       :src="image"
       height="200"
       cover
-    ></v-carousel-item>
+></v-carousel-item>
 </v-carousel>
 
     <VCardTitle>
-{{ name }}
+      <RouterLink
+class="text-decoration-none"
+:to="'/actdetail/' + _id"
+>{{ name }}</RouterLink>
     </VCardTitle>
     <VCardSubtitle><v-icon>mdi-map-marker</v-icon>{{ location }}</VCardSubtitle>
     <VCardText><v-icon>mdi-calendar</v-icon>{{ startDate }} {{ startTime }} ~ {{ endDate }} {{ endTime }}</VCardText>

@@ -73,6 +73,17 @@ const routes = [
         }
       },
       {
+        path: 'actdetail/:id',
+        name: 'ActDetail',
+        // route level code-splitting
+        // this generates a separate chunk (Home-[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import('@/views/ActDetail.vue'),
+        meta: {
+          title: 'JPGO|活動詳情'
+        }
+      },
+      {
         path: 'news',
         name: 'News',
         // route level code-splitting
@@ -102,7 +113,7 @@ const routes = [
         // which is lazy-loaded when the route is visited.
         component: () => import('@/views/VipView.vue'),
         meta: {
-          title: 'JPGO|我要開團'
+          title: 'JPGO|會員中心'
         }
       }
     ]
