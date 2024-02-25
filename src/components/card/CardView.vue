@@ -35,6 +35,7 @@
                 <div>{{ location }}</div>
             </div>
             <!-- <div><TagView :hashtag="'揪團玩'"></TagView></div> -->
+            <div class="hashtag">
             <v-chip
       :style="{ marginRight: '10px' }"
       color="#FFD4C0"
@@ -46,6 +47,7 @@
       variant="flat"
       >{{ area }}
       </v-chip>
+    </div>
         </div>
     </div>
   </template>
@@ -80,7 +82,7 @@ console.log('area', props.area)
     border-radius: 0 0 10px 10px;
   }
   .cardBody{
-    height:250px;
+    height:260px;
     width:250px;
     border-radius:10px;
     box-shadow: 0px 3px 2px 2px #e5cfcf;
@@ -93,5 +95,8 @@ console.log('area', props.area)
   .cardBottom{
     padding-left:10px;
     padding-top:5px;
+  }
+  .hashtag{
+    margin-bottom:8px;
   }
   </style>

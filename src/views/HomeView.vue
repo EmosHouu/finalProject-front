@@ -185,7 +185,6 @@ onMounted(async () => {
   width: 100%;
   /* height:100%; */
   background-color: #FFEFE8;
-  padding-top:80px;
 }
 
 .bg{
@@ -196,6 +195,7 @@ onMounted(async () => {
         margin:auto;
         border-radius: 20px;
         margin-bottom: 80px;
+        margin-top:80px;
     }
     .circle{
         position:absolute;
