@@ -16,7 +16,7 @@ alt="img"
               v-for="activity in activities.slice(0, 2)"
               :key="activity._id"
               :area="activity.area"
-              :location="activity.area"
+              :location="activity.name"
               :category="activity.category"
               :images="activity.images"
 ></CardView>
@@ -42,10 +42,10 @@ alt="img"
 /></div>
         <div class="card">
             <CardView
-              v-for="activity in activities"
+              v-for="activity in activities.slice(0,2)"
               :key="activity._id"
               :area="activity.area"
-              :location="activity.area"
+              :location="activity.name"
               :category="activity.category"
               :images="activity.images"
 ></CardView>
@@ -71,10 +71,10 @@ alt="img"
 /></div>
         <div class="card">
             <CardView
-              v-for="activity in activities"
+              v-for="activity in activities.slice(0,2)"
               :key="activity._id"
               :area="activity.area"
-              :location="activity.area"
+              :location="activity.name"
               :category="activity.category"
               :images="activity.images"
 ></CardView>
@@ -100,10 +100,10 @@ alt="img"
 /></div>
         <div class="card">
             <CardView
-              v-for="activity in activities"
+              v-for="activity in activities.slice(0,2)"
               :key="activity._id"
               :area="activity.area"
-              :location="activity.area"
+              :location="activity.name"
               :category="activity.category"
               :images="activity.images"
 ></CardView>

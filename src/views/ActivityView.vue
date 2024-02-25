@@ -361,9 +361,9 @@ const { handleSubmit, isSubmitting, errors } = useForm({
     description: '',
     category: '',
     area: '',
-    startDate: '',
+    // startDate: '',
     startTime: '',
-    endDate: '',
+    // endDate: '',
     endTime: ''
     // sell: false
   }
