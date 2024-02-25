@@ -82,13 +82,33 @@ color="#FFEFE8"
       </v-chip>
           </div>
           <br>
-          <div class="text-center">
+          <VForm
+:disabled="isSubmitting"
+@submit.prevent="submit"
+>
+<!-- <VTextField
+v-model.number="quantity.value.value"
+type="number"
+min="0"
+:error-messages="quantity. errorMessage.value"
+></VTextField> -->
+                <VBtn
+                color="#F8B44B"
+                type="submit"
+                :loading="isSubmitting"
+                :disabled="isRegistered.value"
+                >{{ isRegistered.value ? '已报名' : '我要参加' }}
+                <!-- 如果用户已经报名，显示 "已报名"，否则显示 "我要参加" -->
+                <!-- 如果用户已经报名，禁止点击按钮 -->
+                </VBtn>
+            </VForm>
+          <!-- <div class="text-center">
             <VBtn
             color="#F8B44B"
             type="submit :isSubmitting"
             >我要參加
             </VBtn>
-          </div>
+          </div> -->
         </VCardText>
         <!-- <VCardActions> -->
 
@@ -117,23 +137,24 @@ class="description"
     </VCol>
 
   </VRow>
-
 </VContainer>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useApi } from '@/composable/axios'
-// import { useSnackbar } from 'vuetify-use-dialog'
-// import { useForm, useField } from 'vee-validate'
-// import * as yup from 'yup'
-// import { useUserStore } from '@/store/user'
+import { useSnackbar } from 'vuetify-use-dialog'
+import { useForm } from 'vee-validate'
+import * as yup from 'yup'
+import { useUserStore } from '@/store/user'
 
 const route = useRoute()
-// const router = useRouter()
-const { api } = useApi()
-// const createSnackbar = useSnackbar()
+const router = useRouter()
+const { api, apiAuth } = useApi()
+const createSnackbar = useSnackbar()
+const user = useUserStore()
+const isRegistered = ref(false)
 
 const activity = ref({
   _id: '',
@@ -148,6 +169,53 @@ const activity = ref({
   participants: '',
   area: '',
   location: ''
+})
+
+const schema = yup.object({
+  quantity: yup.number().typeError('缺少數量').required('缺少數量').min(1, '數量最小為 1')
+})
+const { isSubmitting, handleSubmit } = useForm({
+  validationSchema: schema,
+  initialValues: {
+    quantity: 1
+  }
+})
+// const quantity = useField('quantity')
+
+const submit = handleSubmit(async (values) => {
+  if (!user.isLogin) {
+    router.push('/')
+    return
+  }
+  try {
+    const { data } = await apiAuth.patch('/users/cart', {
+      activity: activity.value._id,
+      quantity: 1
+    })
+    user.cart = data.result
+    isRegistered.value = true // 用户已经报名
+    console.log(isRegistered.value)
+    createSnackbar({
+      text: '報名成功',
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'green',
+        location: 'bottom'
+      }
+    })
+  } catch (error) {
+    const text = error?.response?.data?.message || '發生錯誤，請稍後再試'
+    createSnackbar({
+      text,
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'red',
+        location: 'bottom'
+      }
+    })
+  }
 })
 
 onMounted(async () => {

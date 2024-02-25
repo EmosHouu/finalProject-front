@@ -42,12 +42,16 @@ class="text-decoration-none"
 
     <VCardActions :style="{ 'justify-content': 'flex-end' }">
       <div class="text-center">
-            <VBtn
-            color="#F8B44B"
-            type="submit :isSubmitting"
-            >我要參加
-            </VBtn>
-          </div>
+        <RouterLink
+        class="text-decoration-none"
+        :to="'/actdetail/' + _id"
+          ><VBtn
+        color="#F8B44B"
+        type="submit :isSubmitting"
+        >點我看更多
+        </VBtn>
+        </RouterLink>
+      </div>
     </VCardActions>
 </VCard>
 </template>
