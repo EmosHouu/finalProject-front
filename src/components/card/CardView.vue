@@ -2,12 +2,12 @@
     <div class="cardBody">
         <div class="card">
           <v-carousel
-show-arrows="hover"
-class="carousel"
-height="100%"
-hide-delimiter-background
->
-            <v-carousel-item
+          show-arrows="hover"
+          class="carousel"
+          height="100%"
+          hide-delimiter-background
+          >
+            <!-- <v-carousel-item
               src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
               cover
             ></v-carousel-item>
@@ -20,7 +20,13 @@ hide-delimiter-background
             <v-carousel-item
               src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
               cover
-            ></v-carousel-item>
+            ></v-carousel-item> -->
+            <v-carousel-item
+            v-for="(image, index) in images"
+            :key="index"
+            :src="image"
+            cover
+          ></v-carousel-item>
           </v-carousel>
         </div>
         <div class="cardBottom">
@@ -28,16 +34,28 @@ hide-delimiter-background
                 <span class="mdi mdi-map-marker"></span>
                 <div>{{ location }}</div>
             </div>
-            <div><TagView :hashtag="'揪團玩'"></TagView></div>
-
+            <!-- <div><TagView :hashtag="'揪團玩'"></TagView></div> -->
+            <v-chip
+      :style="{ marginRight: '10px' }"
+      color="#FFD4C0"
+      variant="flat"
+      >{{ category }}
+      </v-chip>
+      <v-chip
+      color="#FFD4C0"
+      variant="flat"
+      >{{ area }}
+      </v-chip>
         </div>
     </div>
   </template>
 
 <script setup>
-import TagView from '../hashtag/TagView.vue'
+// import TagView from '../hashtag/TagView.vue'
 import { defineProps } from 'vue'
-const { location } = defineProps(['location'])
+// const { location } = defineProps(['location'])
+const props = defineProps(['_id', 'area', 'location', 'category', 'images'])
+console.log('area', props.area)
 </script>
 
   <style scoped>

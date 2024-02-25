@@ -1,38 +1,102 @@
 <template>
 <CarouselView />
 <div class="cardBody">
-<HomeCardViewVue
-:background-color="'#FFD4C0'"
-:circle-text="'揪團玩'"
-:cart-text="'想找人一起出去玩卻總是跟朋友時間喬不攏嘛？一起「揪團玩」來看看現在有哪些團可以跟吧！'"
-:img="'https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E9%B3%A5%E5%B1%853.png?raw=true'"
-:bottom-img="'https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E5%B1%B12.png?raw=true'"
-/>
-<!-- <CardHomeViewVue></CardHomeViewVue> -->
-<HomeCardViewVue
-:background-color="'#FFB077'"
-:circle-text="'揪團行'"
-:cart-text="'在日本一個人租車擔心太貴嗎？一起「揪團行」找夥伴一起租車吧 !'"
-:img="'https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/bicycle.png?raw=true'"
-:bottom-img="'https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E5%B1%B11.png?raw=true'"
-/>
-
-<HomeCardViewVue
-:background-color="'#FFD4C0'"
-:circle-text="'揪團買'"
-:cart-text="'想找人一起湊免稅免運嗎？一起「揪團買」來看看現在有哪些團可以跟吧！'"
-:img="'https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/shop.png?raw=true'"
-:bottom-img="'https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E5%B1%B12.png?raw=true'"
-/>
-
-<HomeCardViewVue
-:background-color="'#FFB077'"
-:circle-text="'揪團住'"
-:cart-text="'想要找便宜的床位嗎？一起「揪團住」來看看有哪些房間有優惠吧！'"
-:img="'https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/bed.png?raw=true'"
-:bottom-img="'https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E5%B1%B11.png?raw=true '"
-/>
-
+  <div class="bg">
+        <div
+          class="circle" style="background-color:#FFD4C0"
+          >揪團玩</div>
+                  <div class="text">想找人一起出去玩卻總是跟朋友時間喬不攏嘛？一起「揪團玩」來看看現在有哪些團可以跟吧！</div>
+                  <div class="img"><img src="https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E9%B3%A5%E5%B1%853.png?raw=true" alt="img"/></div>
+        <div class="card">
+            <CardView 
+              v-for="activity in activities" 
+              :key="activity._id" 
+              :area="activity.area" 
+              :location="activity.area" 
+              :category="activity.category"
+              :images="activity.images"></CardView>
+        </div>
+        <div class="btn">
+            <MainBtnView main-btn="揪團去"></MainBtnView>
+            <SubBtnView sub-btn="開團去"></SubBtnView>
+        </div>
+        <div
+          class="bottomImg"
+          style=" backgroundImage: url('https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E5%B1%B12.png?raw=true')"
+          ></div>
+    </div>
+  <div class="bg">
+        <div
+          class="circle" style="background-color:#FFB077"
+          >揪團行</div>
+                  <div class="text">在日本一個人租車擔心太貴嗎？一起「揪團行」找夥伴一起租車吧 !</div>
+                  <div class="img"><img src="https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/bicycle.png?raw=true" alt="img"/></div>
+        <div class="card">
+            <CardView 
+              v-for="activity in activities" 
+              :key="activity._id" 
+              :area="activity.area" 
+              :location="activity.area" 
+              :category="activity.category"
+              :images="activity.images"></CardView>
+        </div>
+        <div class="btn">
+            <MainBtnView main-btn="揪團去"></MainBtnView>
+            <SubBtnView sub-btn="開團去"></SubBtnView>
+        </div>
+        <div
+          class="bottomImg"
+          style=" backgroundImage: url('https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E5%B1%B11.png?raw=true')"
+          ></div>
+    </div>
+    <div class="bg">
+        <div
+          class="circle" style="background-color:#FFD4C0"
+          >揪團買</div>
+                  <div class="text">想找人一起湊免稅免運嗎？一起「揪團買」來看看現在有哪些團可以跟吧！</div>
+                  <div class="img"><img src="https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/shop.png?raw=true" alt="img"/></div>
+        <div class="card">
+            <CardView 
+              v-for="activity in activities" 
+              :key="activity._id" 
+              :area="activity.area" 
+              :location="activity.area" 
+              :category="activity.category"
+              :images="activity.images"></CardView>
+        </div>
+        <div class="btn">
+            <MainBtnView main-btn="揪團去"></MainBtnView>
+            <SubBtnView sub-btn="開團去"></SubBtnView>
+        </div>
+        <div
+          class="bottomImg"
+          style=" backgroundImage: url('https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E5%B1%B12.png?raw=true')"
+          ></div>
+    </div>
+    <div class="bg">
+        <div
+          class="circle" style="background-color:#FFB077"
+          >揪團住</div>
+                  <div class="text">想要找便宜的床位嗎？一起「揪團住」來看看有哪些房間有優惠吧！</div>
+                  <div class="img"><img src="https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/bed.png?raw=true" alt="img"/></div>
+        <div class="card">
+            <CardView 
+              v-for="activity in activities" 
+              :key="activity._id" 
+              :area="activity.area" 
+              :location="activity.area" 
+              :category="activity.category"
+              :images="activity.images"></CardView>
+        </div>
+        <div class="btn">
+            <MainBtnView main-btn="揪團去"></MainBtnView>
+            <SubBtnView sub-btn="開團去"></SubBtnView>
+        </div>
+        <div
+          class="bottomImg"
+          style=" backgroundImage: url('https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E5%B1%B11.png?raw=true')"
+          ></div>
+    </div>
   </div>
 
 </template>
@@ -43,46 +107,49 @@ import { useUserStore } from '@/store/user'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useRouter } from 'vue-router'
 import HomeCardViewVue from '@/components/HomeCardView.vue'
-// import TagView from '../hashtag/TagView.vue'
-
-const { apiAuth } = useApi()
-const user = useUserStore()
+import MainBtnView from '@/components/btn/MainBtnView.vue'
+import SubBtnView from '@/components/btn/SubBtnView.vue'
+import CardView from '@/components/card/CardView.vue'
+import { ref, onMounted, nextTick } from 'vue'
+import { useApi } from '@/composable/axios'
+import { useSnackbar } from 'vuetify-use-dialog'
+const { api } = useApi()
 const createSnackbar = useSnackbar()
-const router = useRouter()
+const activities = ref([])
+const name = ref('') // 創建一個 ref 來存儲名稱
+const images = ref('') // 創建一個 ref 來存儲圖片
+const description = ref('') // 創建一個 ref 來存儲描述
+const startDate = ref('') // 創建一個 ref 來存儲描述
+const endDate = ref('') // 創建一個 ref 來存儲描述
+const startTime = ref('') // 創建一個 ref 來存儲描述
+const endTime = ref('') // 創建一個 ref 來存儲描述
+const participants = ref('')
+const location = ref('')
+const category = ref('')
+const area = ref('')
 
-const props = defineProps(['_id', 'category', 'description', 'images', 'name', 'location', 'startDate', 'endDate', 'startTime', 'endTime', 'participants', 'area'])
-console.log('123', props.name)
-
-const gotoActivity = async () => {
-  if (!user.isLogin) {
-    // 显示提示信息而不是直接跳转
-    createSnackbar({
-      text: '请先登录',
-      showCloseButton: true, // 允许用户关闭提示
-      snackbarProps: {
-        timeout: 5000, // 提示信息显示时间
-        color: 'warning', // 提示信息颜色
-        location: 'top' // 提示信息位置
-      }
-    })
-    return
-  }
+// const cards = ref([])
+onMounted(async () => {
   try {
-    const { data } = await apiAuth.patch('/users/cart', {
-      product: props._id,
-      quantity: 1
-    })
-    user.cart = data.result
-    createSnackbar({
-      text: '新增成功',
-      showCloseButton: false,
-      snackbarProps: {
-        timeout: 2000,
-        color: 'green',
-        location: 'bottom'
-      }
-    })
+    const { data } = await api.get('/activity')
+    name.value = data.result.data[0].name
+    images.value = data.result.data[0].images
+    startDate.value = data.result.data[0].startDate
+    endDate.value = data.result.data[0].endDate
+    startTime.value = data.result.data[0].startTime
+    endTime.value = data.result.data[0].endTime
+    location.value = data.result.data[0].location
+    participants.value = data.result.data[0].participants
+    description.value = data.result.data[0].description
+    category.value = data.result.data[0].category
+    area.value = data.result.data[0].area
+
+    console.log(data) // 查看完整的响应体
+    activities.value.push(...data.result.data)
+    console.log('activities', activities.value)
+    await nextTick()
   } catch (error) {
+    console.log(error)
     const text = error?.response?.data?.message || '發生錯誤，請稍後再試'
     createSnackbar({
       text,
@@ -94,7 +161,7 @@ const gotoActivity = async () => {
       }
     })
   }
-}
+})
 </script>
 <style scoped>
 .cardBody{
@@ -103,5 +170,64 @@ const gotoActivity = async () => {
   background-color: #FFEFE8;
   padding-top:80px;
 }
+
+.bg{
+        position: relative;
+        background-color: white;
+        width:80%;
+        height:400px;
+        margin:auto;
+        border-radius: 20px;
+        margin-bottom: 80px;
+    }
+    .circle{
+        position:absolute;
+        width:120px;
+        height:120px;
+        border-radius:50%;
+        font-size: 22px;
+        font-weight: bold;
+        /* background-color: yellow; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top:-50px;
+        left:-50px;
+        /* box-shadow: 1px 1px 0 0 rgb(157, 157, 157); */
+        box-shadow: 0px 3px 2px 2px #e5cfcf;
+    }
+    .img img{
+        width:120px;
+        position:absolute;
+        top:-20px;
+        right:20px;
+    }
+    .text{
+        width:70%;
+        position:absolute;
+        right:15%;
+        top:10%;
+        font-size: 18px;
+        font-weight:bold;
+    }
+    .card{
+        position: absolute;
+        top:22%;
+        left:15%;
+        display: flex;
+    }
+    .btn{
+        position: absolute;
+        top:60%;
+        right:7%;
+        display: flex;
+    }
+    .bottomImg{
+        position:absolute;
+        bottom:-60px;
+        width: 100%;
+        height: 100px; /* 设置背景图高度，可以根据需要调整 */
+        background-repeat: repeat-x;
+    }
 
 </style>
