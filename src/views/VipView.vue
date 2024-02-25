@@ -21,7 +21,7 @@
           <v-icon start>
             mdi-access-point
           </v-icon>
-          Option 3
+          會員資料編輯
         </v-tab>
       </v-tabs>
       <v-window v-model="tab">
@@ -56,4 +56,3 @@ import { ref } from 'vue'
 
 const tab = ref('option-1')
 </script>
-
