@@ -1,30 +1,30 @@
 <template>
-  <v-card>
-    <div class="profile"></div>
-    <!-- <v-toolbar>
-      <v-toolbar-title>會員中心</v-toolbar-title>
-    </v-toolbar> -->
+<v-container>
+  <v-card class="card">
+    <v-toolbar class="bar">
+      <v-toolbar-title class="bartitle" color="rgb(236, 188, 188)">會員中心</v-toolbar-title>
+    </v-toolbar>
     <div class="d-flex flex-row">
-      <v-tabs
-v-model="tab"
-direction="vertical"
-color="primary"
->
+      <v-tabs v-model="tab" direction="vertical" color="primary">
+        <div class="memprofile">
+          <div class="profile"><v-img cover src="../assets/bicycle.png"/></div>
+          <div class="membername">哈魯</div>
+        </div>
         <v-tab value="option-1">
           <v-icon start>
-            mdi-account
+            mdi-cog
           </v-icon>
           已開團活動管理
         </v-tab>
         <v-tab value="option-2">
           <v-icon start>
-            mdi-lock
+            mdi-calendar-plus
           </v-icon>
           已報名活動
         </v-tab>
         <v-tab value="option-3">
           <v-icon start>
-            mdi-access-point
+            mdi-account
           </v-icon>
           會員資料編輯
         </v-tab>
@@ -52,7 +52,8 @@ color="primary"
       </v-window>
     </div>
   </v-card>
-  {{ name }}
+
+</v-container>
 </template>
 
 <script setup>
@@ -97,9 +98,28 @@ const tab = ref('option-1')
 </script>
 <style scoped>
   .profile{
-    height:70px;
-    width:70px;
+    height:60px;
+    width:60px;
     border-radius:50%;
-    background-color: gray;
+    background-color: rgb(236, 188, 188);
+  }
+  .bartitle{
+    text-align: center;
+    font: bold;
+  }
+  .bar{
+    background-color: #FFD4C0;
+  }
+  .membername{
+    text-align: center;
+    font-weight:bold ;
+    margin-top:10px;
+  }
+  .memprofile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
   }
 </style>
