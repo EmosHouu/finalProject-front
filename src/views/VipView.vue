@@ -2,14 +2,18 @@
 <v-container>
   <v-card class="card">
     <v-toolbar class="bar">
-      <v-toolbar-title class="bartitle" color="rgb(236, 188, 188)">會員中心</v-toolbar-title>
+      <v-toolbar-title
+class="bartitle"
+color="rgb(236, 188, 188)"
+>會員中心</v-toolbar-title>
     </v-toolbar>
     <div class="d-flex flex-row">
-      <v-tabs v-model="tab" direction="vertical" color="primary">
-        <div class="memprofile">
-          <div class="profile"><v-img cover src="../assets/bicycle.png"/></div>
-          <div class="membername">哈魯</div>
-        </div>
+      <v-tabs
+v-model="tab"
+direction="vertical"
+color="primary"
+>
+
         <v-tab value="option-1">
           <v-icon start>
             mdi-cog
@@ -20,7 +24,7 @@
           <v-icon start>
             mdi-calendar-plus
           </v-icon>
-          已報名活動
+          已報名活動管理
         </v-tab>
         <v-tab value="option-3">
           <v-icon start>
@@ -30,10 +34,16 @@
         </v-tab>
       </v-tabs>
       <v-window v-model="tab">
-        <v-window-item value="option-1">
+        <v-window-item
+value="option-1"
+class="text-center"
+>
             <ActivityManageView />
         </v-window-item>
-        <v-window-item value="option-2">
+        <v-window-item
+value="option-2"
+class="centered-content"
+>
             <SignupActivityView />
         </v-window-item>
         <v-window-item value="option-3">
@@ -59,23 +69,29 @@
 <script setup>
 import ActivityManageView from '@/components/member/ActivityManageView.vue'
 import SignupActivityView from '@/components/member/SignupActivityView.vue'
-import { ref, onMounted, nextTick } from 'vue'
-import { useApi } from '@/composable/axios'
-import axios from 'axios'
-const { api } = useApi()
-const user = ref([])
-const name = ref('')
-onMounted(async () => {
-  try {
-    const { data } = await api.get('/users')
-    user.value = data
-    name.value = data.result.data[0].name
-    console.log('data', data)
-    await nextTick()
-  } catch (error) {
-    console.log(error)
-  }
+import { ref, computed } from 'vue'
+// import { useApi } from '@/composable/axios'
+import { useUserStore } from '@/store/user'
+// import axios from 'axios'
+// const { api } = useApi()
+// const name = ref('')
+const user = useUserStore()
+const prependAvatar = computed(() => {
+  return `https://source.boringavatars.com/beam/120/${user.account}?colors=4EB3DE,8DE0A6,FCF09F,F27C7C,DE528C`
 })
+console.log('user', user.account)
+// onMounted(async () => {
+//   try {
+//     const { data } = await api.get('/users')
+//     user.value = data
+//     name.value = data.result.data[0].name
+//     console.log('data', data)
+//     console.log('123', user.account)
+//     await nextTick()
+//   } catch (error) {
+//     console.log(error)
+//   }
+// })
 // async function fetchData() {
 //   try {
 //     const response = await axios.get('/users')
@@ -121,4 +137,11 @@ const tab = ref('option-1')
     align-items: center;
     margin: 10px;
   }
+
+  .centered-content {
+  display: flex;
+  justify-content: center;
+  width: 100%; /* 或根据需要设置的宽度 */
+  margin: auto; /* 实现水平居中 */
+}
 </style>

@@ -184,7 +184,15 @@ const { isSubmitting, handleSubmit } = useForm({
 
 const submit = handleSubmit(async (values) => {
   if (!user.isLogin) {
-    router.push('/')
+    createSnackbar({
+      text: '請先登入',
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'red',
+        location: 'bottom'
+      }
+    })
     return
   }
   try {

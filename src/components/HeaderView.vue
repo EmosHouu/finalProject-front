@@ -126,11 +126,11 @@ v-model="tab"
 align-tabs="title"
 >
           <v-tab
-v-for="item in items"
-:key="item"
-:value="item"
-@click="item === '首頁' ? navigateToHome() : item === '揪團玩' ? navigateToPlay() : item === '揪團行' ? navigateToDrive(): item ==='揪團買'?navigateToBuy() : item === '揪團住'? navigateToHotel() : item === '好康報你知'? navigateToNews() :item === '會員中心'? navigateToVIP(): null "
->
+          v-for="item in computedItems"
+          :key="item"
+          :value="item"
+          @click="navigate(item)"
+          >
             {{ item }}
           </v-tab>
         </v-tabs>
@@ -139,7 +139,7 @@ v-for="item in items"
 
     <v-window v-model="tab">
       <v-window-item
-v-for="item in items"
+v-for="item in newitems"
 :key="item"
 :value="item"
 >
@@ -152,7 +152,7 @@ v-for="item in items"
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useForm, useField } from 'vee-validate'
 import * as yup from 'yup'
@@ -166,6 +166,17 @@ const user = useUserStore()
 
 const tab = ref(null)
 const items = ['首頁', '揪團玩', '揪團行', '揪團買', '揪團住', '好康報你知', '會員中心']
+// 使用计算属性动态生成items数组，如果用户登录，则添加“会员中心”
+const newitems = computed(() => {
+  if (user.isLogin) {
+    return [...items, '會員中心']
+  }
+  return newitems
+})
+const computedItems = computed(() => {
+  // 如果用户已登录，则包括所有项，否则排除“会员中心”
+  return user.isLogin ? items : items.filter(item => item !== '會員中心')
+})
 
 const dialogVisible = ref(false) // 控制弹窗显示的响应式变量
 
@@ -212,32 +223,19 @@ const navigateToHome = () => {
   router.push('/') // 导航到首页
 }
 
-// 添加 navigateToPlay 函数
-const navigateToPlay = () => {
-  router.push('/play') // 导航到 PlayView
-}
-
-const navigateToDrive = () => {
-  router.push('/drive') // 导航到 driveView
-}
-
-const navigateToBuy = () => {
-  router.push('/buy') // 导航到 driveView
-}
-
-const navigateToHotel = () => {
-  router.push('/hotel') // 导航到 driveView
-}
-
-const navigateToNews = () => {
-  router.push('/news') // 导航到 driveView
-}
-
-const navigateToVIP = () => {
-  router.push('/vip') // vip
+const navigate = (item) => {
+  const routes = {
+    首頁: '/',
+    揪團玩: '/play',
+    揪團行: '/drive',
+    揪團買: '/buy',
+    揪團住: '/hotel',
+    好康報你知: '/news',
+    會員中心: '/vip'
+  }
+  router.push(routes[item])
 }
 // 頁面跳轉區結束
-
 const submit = handleSubmit(async (values) => {
   try {
     const { data } = await api.post('/users/login', {

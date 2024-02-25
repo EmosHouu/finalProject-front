@@ -1,7 +1,7 @@
 <template>
     <v-container>
       <v-col cols="12">
-        <h1>已報名活動</h1>
+        <h1 class="text-center">已報名活動管理</h1>
       </v-col>
       <v-divider></v-divider>
       <v-col cols="12">
@@ -41,19 +41,19 @@ color="red"
 class="text-center"
 cols="12"
 >
-        <p>總金額: {{ total }}</p>
-        <v-btn
+        <p>報名活動總數: {{ total }}</p>
+        <!-- <v-btn
 color="green"
 :disabled="!canCheckout"
 :loading="isSubmitting"
 @click="checkout"
->結帳</v-btn>
+>結帳</v-btn> -->
       </v-col>
     </v-container>
-  </template>
+</template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useApi } from '@/composable/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useUserStore } from '@/store/user'
@@ -71,14 +71,14 @@ const headers = [
   // { title: '說明', align: 'center', sortable: true, key: 'description' },
   { title: '分類', align: 'center', sortable: true, key: 'activity.category' },
   { title: '人數', align: 'center', sortable: true, key: 'activity.participants' },
-  { title: '取消報名', align: 'center', sortable: true, key: 'action' }
+  { title: '取消報名', align: 'center', key: 'action' }
 ]
 
-// const total = computed(() => {
-//   return cart.value.reduce((total, current) => {
-//     return total + current.quantity * current.activity.price
-//   }, 0)
-// })
+const total = computed(() => {
+  return cart.value.reduce((total, current) => {
+    return total + current.quantity
+  }, 0)
+})
 
 // const canCheckout = computed(() => {
 //   return cart.value.length > 0 && !cart.value.some(item => !item.activity.sell)
