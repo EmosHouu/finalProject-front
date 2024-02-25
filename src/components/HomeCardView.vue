@@ -10,8 +10,9 @@ class="circle"
 alt="img"
 ></div>
         <div class="card">
-            <CardView :location="'京都'"></CardView>
-            <CardView :location="'京都'"></CardView>
+            <CardView v-for="(data, index) in apiData" :key="index" :area="data.area" />
+            <!-- <CardView :location="'京都'"></CardView>
+            <CardView :location="'京都'"></CardView> -->
         </div>
         <div class="btn">
             <MainBtnView main-btn="揪團去"></MainBtnView>
@@ -27,9 +28,10 @@ class="bottomImg"
 import MainBtnView from './btn/MainBtnView.vue'
 import SubBtnView from './btn/SubBtnView.vue'
 import CardView from './card/CardView'
-import { defineProps } from 'vue'
-const props = defineProps(['circleText', 'cartText', 'img', 'backgroundColor', 'bottomImg'])
-
+import { defineProps, ref } from 'vue'
+// const props = defineProps(['circleText', 'cartText', 'img', 'backgroundColor', 'bottomImg'])
+const props = defineProps(['circleText', 'cartText', 'img', 'backgroundColor', 'bottomImg', 'dataFromApi'])
+const apiData = ref(props.dataFromApi)
 </script>
 <style scoped>
     .bg{
