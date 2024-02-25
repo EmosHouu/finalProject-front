@@ -15,15 +15,20 @@ alt="img"
             <CardView
               v-for="activity in activities.slice(0, 2)"
               :key="activity._id"
+              :_id="activity._id"
               :area="activity.area"
               :location="activity.name"
               :category="activity.category"
               :images="activity.images"
-></CardView>
+            ></CardView>
         </div>
         <div class="btn">
+          <RouterLink class="text-decoration-none" :to="'/play'">
             <MainBtnView main-btn="揪團去"></MainBtnView>
+          </RouterLink>
+          <RouterLink class="text-decoration-none" :to="'/activity'">
             <SubBtnView sub-btn="開團去"></SubBtnView>
+          </RouterLink>
         </div>
         <div
           class="bottomImg"
@@ -51,8 +56,12 @@ alt="img"
 ></CardView>
         </div>
         <div class="btn">
+          <RouterLink class="text-decoration-none" :to="'/drive'">
             <MainBtnView main-btn="揪團去"></MainBtnView>
+          </RouterLink>
+          <RouterLink class="text-decoration-none" :to="'/activity'">
             <SubBtnView sub-btn="開團去"></SubBtnView>
+          </RouterLink>
         </div>
         <div
           class="bottomImg"
@@ -80,8 +89,12 @@ alt="img"
 ></CardView>
         </div>
         <div class="btn">
+          <RouterLink class="text-decoration-none" :to="'/buy'">
             <MainBtnView main-btn="揪團去"></MainBtnView>
+          </RouterLink>
+          <RouterLink class="text-decoration-none" :to="'/activity'">
             <SubBtnView sub-btn="開團去"></SubBtnView>
+          </RouterLink>
         </div>
         <div
           class="bottomImg"
@@ -109,8 +122,12 @@ alt="img"
 ></CardView>
         </div>
         <div class="btn">
+          <RouterLink class="text-decoration-none" :to="'/hotel'">
             <MainBtnView main-btn="揪團去"></MainBtnView>
+          </RouterLink>
+          <RouterLink class="text-decoration-none" :to="'/activity'">
             <SubBtnView sub-btn="開團去"></SubBtnView>
+          </RouterLink>
         </div>
         <div
           class="bottomImg"
@@ -126,6 +143,7 @@ import { useApi } from '@/composable/axios'
 import { useUserStore } from '@/store/user'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useRouter } from 'vue-router'
+const router = useRouter()
 import MainBtnView from '@/components/btn/MainBtnView.vue'
 import SubBtnView from '@/components/btn/SubBtnView.vue'
 import CardView from '@/components/card/CardView.vue'

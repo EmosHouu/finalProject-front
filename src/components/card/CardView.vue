@@ -1,4 +1,8 @@
 <template>
+  <RouterLink
+  class="text-decoration-none"
+  :to="'/actdetail/' + _id"
+  >
     <div class="cardBody">
         <div class="card">
           <v-carousel
@@ -7,20 +11,6 @@
           height="100%"
           hide-delimiter-background
           >
-            <!-- <v-carousel-item
-              src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-              cover
-            ></v-carousel-item>
-
-            <v-carousel-item
-              src="https://cdn.vuetifyjs.com/images/cards/hotel.jpg"
-              cover
-            ></v-carousel-item>
-
-            <v-carousel-item
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-              cover
-            ></v-carousel-item> -->
             <v-carousel-item
             v-for="(image, index) in images"
             :key="index"
@@ -50,10 +40,12 @@
     </div>
         </div>
     </div>
+  </RouterLink>
   </template>
 
 <script setup>
-// import TagView from '../hashtag/TagView.vue'
+import { RouterLink, useRouter } from 'vue-router';
+const router = useRouter()
 import { defineProps } from 'vue'
 // const { location } = defineProps(['location'])
 const props = defineProps(['_id', 'area', 'location', 'category', 'images'])
@@ -80,6 +72,7 @@ console.log('area', props.area)
     height: 70px;
     background-color: #FFEFE8;
     border-radius: 0 0 10px 10px;
+    color:black;
   }
   .cardBody{
     height:260px;
@@ -87,6 +80,7 @@ console.log('area', props.area)
     border-radius:10px;
     box-shadow: 0px 3px 2px 2px #e5cfcf;
     margin-right: 30px;
+    background-color:#FFEFE8;
   }
   .location{
     display:flex;

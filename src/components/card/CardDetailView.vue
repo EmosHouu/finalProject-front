@@ -1,26 +1,22 @@
 <template>
+  <RouterLink 
+  :to="'/actdetail/'+ _id"
+  class="text-decoration-none"
+  >
     <div class="cardBody">
         <div class="card">
           <v-carousel
-show-arrows="hover"
-class="carousel"
-height="100%"
-hide-delimiter-background
->
+          show-arrows="hover"
+          class="carousel"
+          height="100%"
+          hide-delimiter-background
+          >
             <v-carousel-item
-              src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+              v-for="(image, index) in images"
+              :key="index"
+              :src="image"
               cover
-            ></v-carousel-item>
-
-            <v-carousel-item
-              src="https://cdn.vuetifyjs.com/images/cards/hotel.jpg"
-              cover
-            ></v-carousel-item>
-
-            <v-carousel-item
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-              cover
-            ></v-carousel-item>
+              ></v-carousel-item>
           </v-carousel>
         </div>
         <div class="cardBottom">
@@ -38,18 +34,31 @@ hide-delimiter-background
             <div class="location">
                 <span class="mdi mdi-calendar-clock">日期：
                 </span>
-                <div>{{ date }}</div>
+                <div>{{ startDate }} - {{endDate}}</div>
             </div>
-            <div><TagView :hashtag="'揪團玩'"></TagView></div>
+            <div><v-chip
+                :style="{ marginRight: '10px' }"
+                color="#FFD4C0"
+                variant="flat"
+                >{{ category }}
+                </v-chip>
+                <v-chip
+                color="#FFD4C0"
+                variant="flat"
+                >{{ area }}
+                </v-chip>
+            </div>
 
         </div>
     </div>
+  </RouterLink>
   </template>
 
 <script setup>
-import TagView from '../hashtag/TagView.vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 import { defineProps } from 'vue'
-const props = defineProps(['location', 'title', 'people', 'date'])
+const props = defineProps(['_id', 'location', 'title', 'people', 'startDate', 'endDate','images','category','area'])
 </script>
 
   <style scoped>
@@ -69,12 +78,14 @@ const props = defineProps(['location', 'title', 'people', 'date'])
 
   .cardBottom {
     width: 250px;
-    height: 150px;
+    height: 160px;
     background-color: white;
     border-radius: 0 0 10px 10px;
+    color:black;
+    text-decoration: none;
   }
   .cardBody{
-    height:330px;
+    height:340px;
     width:250px;
     border-radius:10px;
     box-shadow: 0px 3px 2px 2px #e5cfcf;

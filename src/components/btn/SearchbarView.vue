@@ -1,17 +1,19 @@
 <template>
     <v-card
-class="pa-2"
-flat
-height="100px"
->
-      <v-toolbar>
+      class="pa-4 searchbar"
+      flat
+      height="100px"
+      >
+      <v-toolbar class="textfield">
         <v-text-field
-hide-details
-prepend-icon="mdi-magnify"
-single-line
-></v-text-field>
+        hide-details
+        prepend-icon="mdi-magnify"
+        single-line
+        ></v-text-field>
         <v-btn>搜尋活動</v-btn>
-    <v-btn
+
+    <!-- 進階搜尋 之後再用 -->
+    <!-- <v-btn
       color="primary"
     >
       進階搜尋
@@ -39,10 +41,6 @@ single-line
       label="選擇分類"
     ></v-select>
 
-    
-
-
-
     <v-btn
       class="me-4"
       type="submit"
@@ -65,7 +63,7 @@ block
           </v-card-actions>
         </v-card>
       </v-dialog>
-    </v-btn>
+    </v-btn> -->
       </v-toolbar>
     </v-card>
 
@@ -106,5 +104,12 @@ const handleReset = () => {
 }
 </script>
 <style scoped>
-
+  .searchbar{
+    background-color: #FFEFE8;
+  }
+  .textfield{
+    background-color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+  }
 </style>
