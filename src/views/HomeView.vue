@@ -106,13 +106,10 @@ import { useApi } from '@/composable/axios'
 import { useUserStore } from '@/store/user'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useRouter } from 'vue-router'
-import HomeCardViewVue from '@/components/HomeCardView.vue'
 import MainBtnView from '@/components/btn/MainBtnView.vue'
 import SubBtnView from '@/components/btn/SubBtnView.vue'
 import CardView from '@/components/card/CardView.vue'
 import { ref, onMounted, nextTick } from 'vue'
-import { useApi } from '@/composable/axios'
-import { useSnackbar } from 'vuetify-use-dialog'
 const { api } = useApi()
 const createSnackbar = useSnackbar()
 const activities = ref([])
@@ -168,7 +165,6 @@ onMounted(async () => {
   width: 100%;
   /* height:100%; */
   background-color: #FFEFE8;
-  padding-top:80px;
 }
 
 .bg{
@@ -179,6 +175,7 @@ onMounted(async () => {
         margin:auto;
         border-radius: 20px;
         margin-bottom: 80px;
+        margin-top:80px;
     }
     .circle{
         position:absolute;
