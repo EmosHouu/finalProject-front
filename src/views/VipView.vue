@@ -1,8 +1,9 @@
 <template>
   <v-card>
-    <v-toolbar color="primary">
-      <v-toolbar-title>User Profile</v-toolbar-title>
-    </v-toolbar>
+    <div class="profile"></div>
+    <!-- <v-toolbar>
+      <v-toolbar-title>會員中心</v-toolbar-title>
+    </v-toolbar> -->
     <div class="d-flex flex-row">
       <v-tabs
 v-model="tab"
@@ -25,7 +26,7 @@ color="primary"
           <v-icon start>
             mdi-access-point
           </v-icon>
-          Option 3
+          會員資料編輯
         </v-tab>
       </v-tabs>
       <v-window v-model="tab">
@@ -57,9 +58,48 @@ color="primary"
 <script setup>
 import ActivityManageView from '@/components/member/ActivityManageView.vue'
 import SignupActivityView from '@/components/member/SignupActivityView.vue'
-import { ref } from 'vue'
+import { ref, onMounted, nextTick } from 'vue'
+import { useApi } from '@/composable/axios'
+import axios from 'axios'
+const { api } = useApi()
+const user = ref([])
+const name = ref('')
+onMounted(async () => {
+  try {
+    const { data } = await api.get('/users')
+    user.value = data
+    name.value = data.result.data[0].name
+    console.log('data', data)
+    await nextTick()
+  } catch (error) {
+    console.log(error)
+  }
+})
+// async function fetchData() {
+//   try {
+//     const response = await axios.get('/users')
+//     const data = response.data
+//     console.log('data', data)
+//     return data // 可選的，如果你想在函數外部使用 data，你可以將它返回
+//   } catch (error) {
+//     console.error(error)
+//     // 在這裡你可以處理錯誤，或者將錯誤拋出（throw）給外層處理
+//     throw error
+//   }
+// }
+
+// // 使用 fetchData 函數
+// fetchData()
 
 const tab = ref('option-1')
 const name = ref('')
 
 </script>
+<style scoped>
+  .profile{
+    height:70px;
+    width:70px;
+    border-radius:50%;
+    background-color: gray;
+  }
+</style>
