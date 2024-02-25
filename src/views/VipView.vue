@@ -31,10 +31,10 @@
       </v-tabs>
       <v-window v-model="tab">
         <v-window-item value="option-1">
-            <ActivityManageView/>
+            <ActivityManageView />
         </v-window-item>
         <v-window-item value="option-2">
-            <SignupActivityView/>
+            <SignupActivityView />
         </v-window-item>
         <v-window-item value="option-3">
           <v-card flat>
@@ -93,6 +93,8 @@ onMounted(async () => {
 // fetchData()
 
 const tab = ref('option-1')
+const name = ref('')
+
 </script>
 <style scoped>
   .profile{
