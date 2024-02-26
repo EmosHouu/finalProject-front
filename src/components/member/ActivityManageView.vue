@@ -160,7 +160,7 @@ const createSnackbar = useSnackbar()
 const user = useUserStore()
 
 const fileAgent = ref(null)
-
+console.log('456', user._id)
 // 表單對話框的開啟狀態
 const dialog = ref(false)
 // 表單對話框正在編輯的商品 ID，空的話代表是新增商品
@@ -407,13 +407,14 @@ const tableSearch = ref('')
 const tableLoadItems = async () => {
   tableLoading.value = true
   try {
-    const { data } = await apiAuth.get('/activity/all/' + user._id, {
+    const { data } = await apiAuth.get('/activity/all/', {
       params: {
         page: tablePage.value,
         itemsPerPage: tableItemsPerPage.value,
         sortBy: tableSortBy.value[0]?.key || 'createdAt',
         sortOrder: tableSortBy.value[0]?.order === 'asc' ? 1 : -1,
-        search: tableSearch.value
+        search: tableSearch.value,
+        userId: user.id
       }
     })
     tableActivity.value.splice(0, tableActivity.value.length, ...data.result.data)
