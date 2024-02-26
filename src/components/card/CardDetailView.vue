@@ -1,5 +1,5 @@
 <template>
-  <RouterLink 
+  <RouterLink
   :to="'/actdetail/'+ _id"
   class="text-decoration-none"
   >
@@ -34,7 +34,7 @@
             <div class="location">
                 <span class="mdi mdi-calendar-clock">日期：
                 </span>
-                <div>{{ startDate }} - {{endDate}}</div>
+                <div>{{ startDate }} - {{ endDate }}</div>
             </div>
             <div><v-chip
                 :style="{ marginRight: '10px' }"
@@ -56,9 +56,9 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
-const router = useRouter()
 import { defineProps } from 'vue'
-const props = defineProps(['_id', 'location', 'title', 'people', 'startDate', 'endDate','images','category','area'])
+const router = useRouter()
+const props = defineProps(['_id', 'location', 'title', 'people', 'startDate', 'endDate', 'images', 'category', 'area'])
 </script>
 
   <style scoped>

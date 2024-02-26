@@ -14,6 +14,7 @@ export const useUserStore = defineStore('user', () => {
   const email = ref('')
   const cart = ref(0)
   const role = ref(UserRole.USER)
+  const avatar = ref('')
 
   const login = (data) => {
     if (data.token) {
@@ -25,6 +26,7 @@ export const useUserStore = defineStore('user', () => {
     email.value = data.email
     cart.value = data.cart
     role.value = data.role
+    avatar.value = data.avatar
   }
 
   const isLogin = computed(() => {
@@ -51,6 +53,7 @@ export const useUserStore = defineStore('user', () => {
     _id.value = ''
     account.value = ''
     email.value = ''
+    avatar.value = ''
     cart.value = 0
     role.value = UserRole.USER
   }
@@ -67,6 +70,7 @@ export const useUserStore = defineStore('user', () => {
     logout,
     isLogin,
     isAdmin,
+    avatar,
     getProfile
   }
 }, {

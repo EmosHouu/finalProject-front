@@ -22,7 +22,12 @@
         <div class="cardBottom">
             <div class="location">
                 <span class="mdi mdi-map-marker"></span>
-                <div>{{ location }}</div>
+                <RouterLink
+                class="text-decoration-none"
+                :to="'/actdetail/' + _id"
+                >
+                <div>{{ name }}</div>
+                </RouterLink>
             </div>
             <!-- <div><TagView :hashtag="'揪團玩'"></TagView></div> -->
             <div class="hashtag">
@@ -44,12 +49,12 @@
   </template>
 
 <script setup>
-import { RouterLink, useRouter } from 'vue-router';
-const router = useRouter()
+import { RouterLink, useRouter } from 'vue-router'
 import { defineProps } from 'vue'
+const router = useRouter()
 // const { location } = defineProps(['location'])
-const props = defineProps(['_id', 'area', 'location', 'category', 'images'])
-console.log('area', props.area)
+const props = defineProps(['_id', 'area', 'location', 'category', 'images', 'name'])
+console.log('name', props.name)
 </script>
 
   <style scoped>

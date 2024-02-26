@@ -12,21 +12,24 @@ src="https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E9%B3%
 alt="img"
 /></div>
         <div class="card">
-            <CardView
-              v-for="activity in activities.slice(0, 2)"
-              :key="activity._id"
-              :_id="activity._id"
-              :area="activity.area"
-              :location="activity.name"
-              :category="activity.category"
-              :images="activity.images"
-            ></CardView>
+        <VCol
+        v-for="activity in activities"
+        :key="activity._id"
+>
+        <CardView v-bind="activity"></CardView>
+        </VCol>
         </div>
         <div class="btn">
-          <RouterLink class="text-decoration-none" :to="'/play'">
+          <RouterLink
+          class="text-decoration-none"
+          :to="'/play'"
+          >
             <MainBtnView main-btn="揪團去"></MainBtnView>
           </RouterLink>
-          <RouterLink class="text-decoration-none" :to="'/activity'">
+          <RouterLink
+class="text-decoration-none"
+:to="'/activity'"
+>
             <SubBtnView sub-btn="開團去"></SubBtnView>
           </RouterLink>
         </div>
@@ -51,16 +54,22 @@ alt="img"
               :key="activity._id"
               :_id="activity._id"
               :area="activity.area"
-              :location="activity.name"
+              :name="activity.name"
               :category="activity.category"
               :images="activity.images"
 ></CardView>
         </div>
         <div class="btn">
-          <RouterLink class="text-decoration-none" :to="'/drive'">
+          <RouterLink
+class="text-decoration-none"
+:to="'/drive'"
+>
             <MainBtnView main-btn="揪團去"></MainBtnView>
           </RouterLink>
-          <RouterLink class="text-decoration-none" :to="'/activity'">
+          <RouterLink
+class="text-decoration-none"
+:to="'/activity'"
+>
             <SubBtnView sub-btn="開團去"></SubBtnView>
           </RouterLink>
         </div>
@@ -81,20 +90,26 @@ alt="img"
 /></div>
         <div class="card">
             <CardView
-              v-for="activity in activities.slice(0,2)"
+              v-for="activity in activities"
               :key="activity._id"
               :_id="activity._id"
               :area="activity.area"
-              :location="activity.name"
+              :name="activity.name"
               :category="activity.category"
               :images="activity.images"
 ></CardView>
         </div>
         <div class="btn">
-          <RouterLink class="text-decoration-none" :to="'/buy'">
+          <RouterLink
+class="text-decoration-none"
+:to="'/buy'"
+>
             <MainBtnView main-btn="揪團去"></MainBtnView>
           </RouterLink>
-          <RouterLink class="text-decoration-none" :to="'/activity'">
+          <RouterLink
+class="text-decoration-none"
+:to="'/activity'"
+>
             <SubBtnView sub-btn="開團去"></SubBtnView>
           </RouterLink>
         </div>
@@ -115,20 +130,26 @@ alt="img"
 /></div>
         <div class="card">
             <CardView
-              v-for="activity in activities.slice(0,2)"
+              v-for="activity in activities"
               :key="activity._id"
               :_id="activity._id"
               :area="activity.area"
-              :location="activity.name"
+              :name="activity.name"
               :category="activity.category"
               :images="activity.images"
           ></CardView>
         </div>
         <div class="btn">
-          <RouterLink class="text-decoration-none" :to="'/hotel'">
+          <RouterLink
+class="text-decoration-none"
+:to="'/hotel'"
+>
             <MainBtnView main-btn="揪團去"></MainBtnView>
           </RouterLink>
-          <RouterLink class="text-decoration-none" :to="'/activity'">
+          <RouterLink
+class="text-decoration-none"
+:to="'/activity'"
+>
             <SubBtnView sub-btn="開團去"></SubBtnView>
           </RouterLink>
         </div>
@@ -146,12 +167,12 @@ import { useApi } from '@/composable/axios'
 import { useUserStore } from '@/store/user'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useRouter } from 'vue-router'
-const router = useRouter()
 import MainBtnView from '@/components/btn/MainBtnView.vue'
 import SubBtnView from '@/components/btn/SubBtnView.vue'
 import CardView from '@/components/card/CardView.vue'
 import CarouselView from '@/components/CarouselView.vue'
 import { ref, onMounted, nextTick } from 'vue'
+const router = useRouter()
 const { api } = useApi()
 const createSnackbar = useSnackbar()
 const activities = ref([])

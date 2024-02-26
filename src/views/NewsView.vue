@@ -10,6 +10,7 @@
           <h2>{{ name }}</h2>
         </VCardTitle>
 
+        <!--輪播要按下去才有圖片是 vuetify渲染問題加上v-if="images.length>0" 解決 -->
         <v-carousel
         v-if="images.length>0"
         show-arrows="hover"
