@@ -1,6 +1,6 @@
 // Composables
-import { createRouter, createWebHashHistory } from 'vue-router'
-
+import { createRouter, createWebHashHistory, START_LOCATION } from 'vue-router'
+import { useUserStore } from '@/store/user'
 const routes = [
   {
     path: '/',
@@ -125,15 +125,30 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  // 使用路由的meta字段来设置document.title
-  if (to.meta && to.meta.title) {
-    document.title = to.meta.title
-  } else {
-    // 如果没有设置title，可以给一个默认标题
-    document.title = 'JPGO'
+router.afterEach((to, from) => {
+  document.title = to.meta.title
+})
+
+router.beforeEach(async (to, from, next) => {
+  const user = useUserStore()
+
+  if (from === START_LOCATION) {
+    await user.getProfile()
   }
-  next()
+
+  if (user.isLogin && ['/register', '/login'].includes(to.path)) {
+    // 如果有登入，要去註冊或登入頁，重新導向回首頁
+    next('/')
+  } else if (to.meta.login && !user.isLogin) {
+    // 如果要去的頁面要登入，但是沒登入，重新導向回登入頁
+    next('/login')
+  } else if (to.meta.admin && !user.isAdmin) {
+    // 如果要去的頁面要管理員，但是不是管理員，重新導向回首頁
+    next('/')
+  } else {
+    // 不重新導向
+    next()
+  }
 })
 // if (from === START_LOCATION) {
 //   await user.getProfile()

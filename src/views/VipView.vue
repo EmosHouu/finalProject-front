@@ -50,11 +50,15 @@ class="centered-content"
           <v-card flat>
             <v-card-text>
               <p>
-                Fusce a quam. Phasellus nec sem in justo pellentesque facilisis. Nam eget dui. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. In dui magna, posuere eget, vestibulum et, tempor auctor, justo.
+                <VListItem
+                :prepend-avatar="user.avatar"
+                :title="user.account"
+                :subtitle="user.name"
+                ></VListItem>
               </p>
 
               <p class="mb-0">
-                Cras sagittis. Phasellus nec sem in justo pellentesque facilisis. Proin sapien ipsum, porta a, auctor quis, euismod ut, mi. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nam at tortor in tellus interdum sagittis.
+
               </p>
             </v-card-text>
           </v-card>
@@ -64,6 +68,7 @@ class="centered-content"
   </v-card>
 
 </v-container>
+
 </template>
 
 <script setup>
@@ -76,10 +81,11 @@ import { useUserStore } from '@/store/user'
 // const { api } = useApi()
 // const name = ref('')
 const user = useUserStore()
-const prependAvatar = computed(() => {
-  return `https://source.boringavatars.com/beam/120/${user.account}?colors=4EB3DE,8DE0A6,FCF09F,F27C7C,DE528C`
-})
-console.log('user', user.account)
+// const userAvatar = computed(() => user.avatar)
+
+console.log('123', user.avatar)
+
+// console.log('prependAvatar', prependAvatar.value)
 // onMounted(async () => {
 //   try {
 //     const { data } = await api.get('/users')
@@ -109,7 +115,9 @@ console.log('user', user.account)
 // fetchData()
 
 const tab = ref('option-1')
-
+const prependAvatar = computed(() => {
+  return `https://source.boringavatars.com/beam/120/${user.account}?colors=4EB3DE,8DE0A6,FCF09F,F27C7C,DE528C`
+})
 </script>
 <style scoped>
   .profile{
