@@ -49,6 +49,7 @@ alt="img"
             <CardView
               v-for="activity in activities.slice(0,2)"
               :key="activity._id"
+              :_id="activity._id"
               :area="activity.area"
               :location="activity.name"
               :category="activity.category"
@@ -82,6 +83,7 @@ alt="img"
             <CardView
               v-for="activity in activities.slice(0,2)"
               :key="activity._id"
+              :_id="activity._id"
               :area="activity.area"
               :location="activity.name"
               :category="activity.category"
@@ -115,11 +117,12 @@ alt="img"
             <CardView
               v-for="activity in activities.slice(0,2)"
               :key="activity._id"
+              :_id="activity._id"
               :area="activity.area"
               :location="activity.name"
               :category="activity.category"
               :images="activity.images"
-></CardView>
+          ></CardView>
         </div>
         <div class="btn">
           <RouterLink class="text-decoration-none" :to="'/hotel'">
