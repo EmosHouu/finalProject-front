@@ -11,30 +11,33 @@
       <v-text-field
         v-model="account"
         label="帳號"
+        readonly="readonly"
         :rules="accountRules"
+        prepend-icon="mdi-account"
       ></v-text-field>
 
       <v-text-field
         v-model="name"
         label="姓名"
         :rules="nameRules"
+        prepend-icon="mdi-id-card"
       ></v-text-field>
 
       <v-text-field
         v-model="email"
         label="信箱"
         :rules="emailRules"
+        prepend-icon="mdi-email"
       ></v-text-field>
 
-      <!-- <VTextField
+      <VTextField
         v-model="birthday"
         label="生日"
         readonly="readonly"
         prepend-icon="mdi-calendar"
-        @click:prepend="menu = !menu"
         ></VTextField>
 
-        <VDialog
+        <!-- <VDialog
         v-model="menu"
         persistent
         max-width="290px"
@@ -48,7 +51,13 @@
         ></VDatePicker>
     </VDialog> -->
 
-      <v-btn type="submit" block class="mt-2">Submit</v-btn>
+    <v-text-field
+        v-model="phone"
+        label="手機"
+        :rules="phoneRules"
+        prepend-icon="mdi-phone"
+      ></v-text-field>
+      <v-btn type="submit" block class="mt-2">確定修改</v-btn>
     </v-form>
   </v-sheet>
 
@@ -57,14 +66,20 @@
         <p>會員名稱：{{user.email}}</p> -->
 </template>
 <script setup>
-import {ref, computed } from 'vue'
-import { isEmail } from 'validator'; // 导入用于验证邮箱格式的工具库，例如 validator
+import { ref, computed, onMounted } from 'vue'
+import { isEmail, isMobilePhone } from 'validator' // 导入用于验证邮箱格式的工具库，例如 validator
 // 引用pinia狀態管理庫裡的user
 import { useUserStore } from '@/store/user'
 const user = useUserStore()
 const prependAvatar = computed(() => {
     return `https://source.boringavatars.com/beam/120/${user.account}?colors=4EB3DE,8DE0A6,FCF09F,F27C7C,DE528C`
 })
+// onMounted(() => {
+//     user.getProfile()
+//     console.log(user.getProfile())
+// })
+// console.log(user.birthday) // 访问 birthday
+// console.log(user.phone)    // 访问 phone
 // 編輯會員資料表單
 const account = ref(user.account)
 const accountRules = ref([
@@ -91,10 +106,14 @@ const emailRules = ref([
 ])
 
 const birthday = ref(user.birthday)
-const menu = ref(false)
-const closeMenu = () => {
-  menu.value = false
-}
+const phone = ref(user.phone)
+const phoneRules = ref([
+  (value) => {
+    if (isMobilePhone(value)) return true
+    return '手機格式不符'
+  }
+])
+
 </script>
 <style scoped>
 </style>

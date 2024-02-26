@@ -1,8 +1,4 @@
 <template>
-  <RouterLink
-  :to="'/actdetail/'+ _id"
-  class="text-decoration-none"
-  >
     <div class="cardBody">
         <div class="card">
           <v-carousel
@@ -19,6 +15,10 @@
               ></v-carousel-item>
           </v-carousel>
         </div>
+        <RouterLink
+        :to="'/actdetail/'+ _id"
+        class="text-decoration-none"
+        >
         <div class="cardBottom">
             <div class="title">{{ title }}</div>
             <div class="location">
@@ -50,8 +50,8 @@
             </div>
 
         </div>
+      </RouterLink>
     </div>
-  </RouterLink>
   </template>
 
 <script setup>
