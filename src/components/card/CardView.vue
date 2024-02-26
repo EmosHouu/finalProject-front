@@ -15,6 +15,10 @@
           ></v-carousel-item>
           </v-carousel>
         </div>
+        <RouterLink
+        class="text-decoration-none"
+        :to="'/actdetail/' + _id"
+        >
         <div class="cardBottom">
             <div class="location">
                 <span class="mdi mdi-map-marker"></span>
@@ -28,18 +32,19 @@
             <!-- <div><TagView :hashtag="'揪團玩'"></TagView></div> -->
             <div class="hashtag">
             <v-chip
-      :style="{ marginRight: '10px' }"
-      color="#FFD4C0"
-      variant="flat"
-      >{{ category }}
-      </v-chip>
-      <v-chip
-      color="#FFD4C0"
-      variant="flat"
-      >{{ area }}
-      </v-chip>
+            :style="{ marginRight: '10px' }"
+            color="#FFD4C0"
+            variant="flat"
+            >{{ category }}
+            </v-chip>
+            <v-chip
+            color="#FFD4C0"
+            variant="flat"
+            >{{ area }}
+            </v-chip>
     </div>
         </div>
+      </RouterLink>
     </div>
   </template>
 

@@ -9,11 +9,15 @@ color="rgb(236, 188, 188)"
     </v-toolbar>
     <div class="d-flex flex-row">
       <v-tabs
-v-model="tab"
-direction="vertical"
-color="primary"
->
-
+      v-model="tab"
+      direction="vertical"
+      color="primary"
+      >
+      <VListItem class="avatar"
+          :prepend-avatar="user.avatar"
+          :title="user.account"
+          :subtitle="user.name"
+          ></VListItem>
         <v-tab value="option-1">
           <v-icon start>
             mdi-cog
@@ -35,19 +39,20 @@ color="primary"
       </v-tabs>
       <v-window v-model="tab">
         <v-window-item
-value="option-1"
-class="text-center"
->
-            <ActivityManageView />
+        value="option-1"
+        class="text-center"
+        >
+        <ActivityManageView />
         </v-window-item>
         <v-window-item
-value="option-2"
-class="centered-content"
->
-            <SignupActivityView />
+        value="option-2"
+        class="centered-content"
+        >
+        <SignupActivityView />
         </v-window-item>
         <v-window-item value="option-3">
-          <v-card flat>
+          <MemberEditView/>
+          <!-- <v-card flat>
             <v-card-text>
               <p>
                 <VListItem
@@ -61,7 +66,7 @@ class="centered-content"
 
               </p>
             </v-card-text>
-          </v-card>
+          </v-card> -->
         </v-window-item>
       </v-window>
     </div>
@@ -74,6 +79,7 @@ class="centered-content"
 <script setup>
 import ActivityManageView from '@/components/member/ActivityManageView.vue'
 import SignupActivityView from '@/components/member/SignupActivityView.vue'
+import MemberEditView from '@/components/member/MemberEditView.vue'
 import { ref, computed } from 'vue'
 // import { useApi } from '@/composable/axios'
 import { useUserStore } from '@/store/user'
@@ -138,11 +144,7 @@ const prependAvatar = computed(() => {
     font-weight:bold ;
     margin-top:10px;
   }
-  .memprofile{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .avatar{
     margin: 10px;
   }
 
