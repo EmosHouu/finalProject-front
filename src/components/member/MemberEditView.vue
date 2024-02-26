@@ -105,7 +105,16 @@ const emailRules = ref([
   }
 ])
 
-const birthday = ref(user.birthday)
+// 將user.birthday轉換格式為 年/月/日
+const userBirthday = new Date(user.birthday)
+const year = userBirthday.getFullYear()
+const month = String(userBirthday.getMonth() + 1).padStart(2, '0')
+const day = String(userBirthday.getDate()).padStart(2, '0')
+const formattedBirthday = `${year}/${month}/${day}`
+console.log(formattedBirthday)
+const birthday = ref(formattedBirthday)
+
+
 const phone = ref(user.phone)
 const phoneRules = ref([
   (value) => {
