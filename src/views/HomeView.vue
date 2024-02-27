@@ -12,12 +12,15 @@ src="https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E9%B3%
 alt="img"
 /></div>
         <div class="card">
-        <VCol
-        v-for="activity in activities"
-        :key="activity._id"
->
-        <CardView v-bind="activity"></CardView>
-        </VCol>
+            <CardView
+              v-for="activity in activities.slice(0,2)"
+              :key="activity._id"
+              :_id="activity._id"
+              :area="activity.area"
+              :name="activity.name"
+              :category="activity.category"
+              :images="activity.images"
+            ></CardView>
         </div>
         <div class="btn">
           <RouterLink
@@ -57,7 +60,7 @@ alt="img"
               :name="activity.name"
               :category="activity.category"
               :images="activity.images"
-></CardView>
+            ></CardView>
         </div>
         <div class="btn">
           <RouterLink
@@ -90,14 +93,14 @@ alt="img"
 /></div>
         <div class="card">
             <CardView
-              v-for="activity in activities"
+              v-for="activity in activities.slice(0,2)"
               :key="activity._id"
               :_id="activity._id"
               :area="activity.area"
               :name="activity.name"
               :category="activity.category"
               :images="activity.images"
-></CardView>
+            ></CardView>
         </div>
         <div class="btn">
           <RouterLink
@@ -130,14 +133,14 @@ alt="img"
 /></div>
         <div class="card">
             <CardView
-              v-for="activity in activities"
+              v-for="activity in activities.slice(0,2)"
               :key="activity._id"
               :_id="activity._id"
               :area="activity.area"
               :name="activity.name"
               :category="activity.category"
               :images="activity.images"
-          ></CardView>
+            ></CardView>
         </div>
         <div class="btn">
           <RouterLink

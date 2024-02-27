@@ -22,12 +22,7 @@
         <div class="cardBottom">
             <div class="location">
                 <span class="mdi mdi-map-marker"></span>
-                <RouterLink
-                class="text-decoration-none"
-                :to="'/actdetail/' + _id"
-                >
                 <div>{{ name }}</div>
-                </RouterLink>
             </div>
             <!-- <div><TagView :hashtag="'揪團玩'"></TagView></div> -->
             <div class="hashtag">
