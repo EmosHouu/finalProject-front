@@ -102,7 +102,12 @@ v-bind="props"
       class="member"
       @click="logout"
       >
-      <span class="mdi mdi-logout Icon"></span>
+    <v-avatar class="avatar">
+      <v-img
+        :src="user.avatar"
+        :alt="user.account"
+      ></v-img>
+    </v-avatar>
       <p>登出</p>
       </div>
 
@@ -333,6 +338,9 @@ const logout = async () => {
   top: 10px;
   right: 100px;
   animation: rotateSun 10s linear infinite;
+}
+.avatar{
+  margin:8px 0 3px 0;
 }
 
 @keyframes rotateSun {
