@@ -4,13 +4,13 @@
   <div class="bg">
         <div
           class="circle"
-style="background-color:#FFD4C0"
+          style="background-color:#FFD4C0"
           >揪團玩</div>
                   <div class="text">想找人一起出去玩卻總是跟朋友時間喬不攏嘛？一起「揪團玩」來看看現在有哪些團可以跟吧！</div>
                   <div class="img"><img
-src="https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E9%B3%A5%E5%B1%853.png?raw=true"
-alt="img"
-/></div>
+        src="https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E9%B3%A5%E5%B1%853.png?raw=true"
+        alt="img"
+        /></div>
         <div class="card">
             <CardView
               v-for="activity in activities.slice(0,2)"

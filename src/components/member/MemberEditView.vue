@@ -1,69 +1,77 @@
 <template>
-    <div>會員資料編輯</div>
-    <VListItem
+    <v-container>
+        <v-row>
+            <v-col cols="12">
+                <h1 text-center>會員資料編輯</h1>
+                <v-divider></v-divider>
+            </v-col>
+        </v-row>
+    <!-- <VListItem
     :prepend-avatar="user.avatar"
     :title="user.account"
     :subtitle="user.name"
-    ></VListItem>
+    ></VListItem> -->
+    <v-col cols="12">
+        <v-sheet width="300" class="mx-auto">
+        <v-form fast-fail @submit.prevent>
+        <v-text-field
+            v-model="account"
+            label="帳號"
+            :readonly="true"
+            :rules="accountRules"
+            prepend-icon="mdi-account"
+        ></v-text-field>
 
-    <v-sheet width="300" class="mx-auto">
-    <v-form fast-fail @submit.prevent>
-      <v-text-field
-        v-model="account"
-        label="帳號"
-        readonly="readonly"
-        :rules="accountRules"
-        prepend-icon="mdi-account"
-      ></v-text-field>
+        <v-text-field
+            v-model="name"
+            label="姓名"
+            :rules="nameRules"
+            prepend-icon="mdi-id-card"
+        ></v-text-field>
 
-      <v-text-field
-        v-model="name"
-        label="姓名"
-        :rules="nameRules"
-        prepend-icon="mdi-id-card"
-      ></v-text-field>
+        <v-text-field
+            v-model="email"
+            label="信箱"
+            :rules="emailRules"
+            prepend-icon="mdi-email"
+        ></v-text-field>
 
-      <v-text-field
-        v-model="email"
-        label="信箱"
-        :rules="emailRules"
-        prepend-icon="mdi-email"
-      ></v-text-field>
+        <VTextField
+            v-model="birthday"
+            label="生日"
+            :readonly="true"
+            prepend-icon="mdi-calendar"
+            ></VTextField>
 
-      <VTextField
-        v-model="birthday"
-        label="生日"
-        readonly="readonly"
-        prepend-icon="mdi-calendar"
-        ></VTextField>
+            <!-- <VDialog
+            v-model="menu"
+            persistent
+            max-width="290px"
+            @click:outside="closeMenu"
+            >
+        <VDatePicker
+            v-model="birthday"
+            color="#F8B44B"
+            :max="maxDate"
+            @input="menu = false"
+            ></VDatePicker>
+        </VDialog> -->
 
-        <!-- <VDialog
-        v-model="menu"
-        persistent
-        max-width="290px"
-        @click:outside="closeMenu"
-        >
-    <VDatePicker
-        v-model="birthday"
-        color="#F8B44B"
-        :max="maxDate"
-        @input="menu = false"
-        ></VDatePicker>
-    </VDialog> -->
-
-    <v-text-field
-        v-model="phone"
-        label="手機"
-        :rules="phoneRules"
-        prepend-icon="mdi-phone"
-      ></v-text-field>
-      <v-btn type="submit" block class="mt-2">確定修改</v-btn>
-    </v-form>
-  </v-sheet>
+        <v-text-field
+            v-model="phone"
+            label="手機"
+            :rules="phoneRules"
+            prepend-icon="mdi-phone"
+        ></v-text-field>
+        <v-btn type="submit" block class="mt-2">確定修改</v-btn>
+        </v-form>
+        </v-sheet>
+    </v-col>
 
         <!-- <p>會員帳號：{{user.account}}</p>
         <p>會員名稱：{{user.name}}</p>
         <p>會員名稱：{{user.email}}</p> -->
+</v-container>
 </template>
 <script setup>
 import { ref, computed, onMounted } from 'vue'
