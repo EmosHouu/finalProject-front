@@ -2,7 +2,7 @@
   <div class="body">
   <div class="header">
     <SmallCarouselView :title="'揪團玩'"></SmallCarouselView>
-    <SearchbarView></SearchbarView>
+    <!-- <SearchbarView></SearchbarView> -->
   </div>
     <!-- <SectionView
 :fill="'#FFD4C0'"
@@ -190,6 +190,7 @@ onMounted(async () => {
   }
   .sectionBody{
     width:85%;
+    /* 記得改min-height 才會隨著圖片變化 */
     min-height:100vh;
     background-color: #ffffffb3;
     border-radius: 20px;

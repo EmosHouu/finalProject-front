@@ -1,9 +1,9 @@
 <template>
+  <div class="body">
   <div class="header">
     <SmallCarouselView :title="'揪團住'"></SmallCarouselView>
-    <SearchbarView></SearchbarView>
+    <!-- <SearchbarView></SearchbarView> -->
   </div>
-  <div class="body">
     <!-- <SectionView
 :fill="'#FFD4C0'"
 :text="'熱門揪團活動'"
@@ -12,6 +12,7 @@
 :fill="'#FFB077'"
 :text="'最新揪團活動'"
 ></SectionView> -->
+
 <div class="sectionBody">
         <svg
           class="circle"
@@ -88,36 +89,35 @@
         />
         </svg>
         <p class="text">揪團住活動</p>
-        <div class="cardSection">
-            <v-container>
-            <v-row
-                text-align="center"
-                no-gutters
-                style="height: 150px;"
-            >
-            <!-- <RouterLink
-              :to="'/actdetail/'+ _id"
-            > -->
-                <CardDetailView
-                v-for="activity in activities"
-                :key="activity._id"
-                :_id="activity._id"
-                :title="activity.name"
-                :location="activity.area"
-                :people="activity.participants"
-                :start-date="activity.startDate"
-                :end-date="activity.endDate"
-                :images="activity.images"
-                :category="activity.category"
-                :area="activity.area"
-                class="card-detail-view"
-                ></CardDetailView>
-            <!-- </RouterLink> -->
-            </v-row>
-            </v-container>
 
-        </div>
-    </div>
+  <v-container text-align="center">
+    <v-row text-align="center">
+      <v-col
+        v-for="activity in activities"
+        :key="activity._id"
+        cols="12"
+        sm="6"
+        md="4"
+        lg="3"
+>
+        <CardDetailView
+          :_id="activity._id"
+          :title="activity.name"
+          :location="activity.area"
+          :people="activity.participants"
+          :start-date="activity.startDate"
+          :end-date="activity.endDate"
+          :images="activity.images"
+          :category="activity.category"
+          :area="activity.area"
+          class="card-detail-view"
+        ></CardDetailView>
+      </v-col>
+    </v-row>
+  </v-container>
+
+</div>
+
   </div>
 </template>
 
@@ -149,7 +149,7 @@ const area = ref('')
 // const cards = ref([])
 onMounted(async () => {
   try {
-    const { data } = await api.get('/activity/play')
+    const { data } = await api.get('/activity/hotel')
     name.value = data.result.data[0].name
     images.value = data.result.data[0].images
     startDate.value = data.result.data[0].startDate
@@ -185,22 +185,26 @@ onMounted(async () => {
   .header{
     width:100%;
   }
+  .body{
+    height: 100%;
+  }
   .sectionBody{
-        width:85%;
-        height:100vh;
-        background-color: #ffffffb3;
-        border-radius: 20px;
-        position: relative;
-        margin:auto;
-        margin-top:60px;
-        margin-bottom: 100px;
-        padding: 20px;
-        box-shadow: 0px 3px 2px 2px #e5cfcf;
-    }
+    width:85%;
+    /* 記得改min-height 才會隨著圖片變化 */
+    min-height:100vh;
+    background-color: #ffffffb3;
+    border-radius: 20px;
+    position: relative;
+    margin:auto;
+    margin-top:60px;
+    margin-bottom: 100px;
+    padding: 20px;
+    box-shadow: 0px 3px 2px 2px #e5cfcf;
+  }
     .circle{
-        position:absolute;
-        top:-50px;
-        left:-50px;
+    position:absolute;
+    top:-50px;
+    left:-50px;
     }
     .text{
         position: absolute;
@@ -214,6 +218,7 @@ onMounted(async () => {
         position: absolute;
         top:60px;
         left:40px;
+        height:100%;
     }
 
     .card-detail-view {

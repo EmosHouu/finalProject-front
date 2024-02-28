@@ -171,6 +171,7 @@ class="text-decoration-none"
 </template>
 
 <script setup>
+import CarouselView from '@/components/CarouselView.vue'
 import PlayCardView from '@/components/homeCard/PlayCardView.vue'
 import DriveCardView from '@/components/homeCard/DriveCardView.vue'
 import BuyCardView from '@/components/homeCard/BuyCardView.vue'

@@ -48,7 +48,6 @@ import { useRouter } from 'vue-router'
 import MainBtnView from '@/components/btn/MainBtnView.vue'
 import SubBtnView from '@/components/btn/SubBtnView.vue'
 import CardView from '@/components/card/CardView.vue'
-import CarouselView from '@/components/CarouselView.vue'
 import { ref, onMounted, nextTick } from 'vue'
 const router = useRouter()
 const { api } = useApi()

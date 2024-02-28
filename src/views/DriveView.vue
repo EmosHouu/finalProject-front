@@ -2,7 +2,7 @@
   <div class="body">
   <div class="header">
     <SmallCarouselView :title="'揪團行'"></SmallCarouselView>
-    <SearchbarView></SearchbarView>
+    <!-- <SearchbarView></SearchbarView> -->
   </div>
     <!-- <SectionView
 :fill="'#FFD4C0'"
