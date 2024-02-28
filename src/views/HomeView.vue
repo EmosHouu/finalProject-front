@@ -1,7 +1,12 @@
 <template>
 <CarouselView />
 <div class="cardBody">
-  <div class="bg">
+  <PlayCardView></PlayCardView>
+  <DriveCardView></DriveCardView>
+  <BuyCardView></BuyCardView>
+  <HotelCardView></HotelCardView>
+
+  <!-- <div class="bg">
         <div
           class="circle"
           style="background-color:#FFD4C0"
@@ -40,7 +45,7 @@ class="text-decoration-none"
           class="bottomImg"
           style=" backgroundImage: url('https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E5%B1%B12.png?raw=true')"
           ></div>
-    </div>
+  </div>
   <div class="bg">
         <div
           class="circle"
@@ -160,71 +165,16 @@ class="text-decoration-none"
           class="bottomImg"
           style=" backgroundImage: url('https://github.com/EmosHouu/finalProject-front/blob/emos/src/assets/%E5%B1%B11.png?raw=true')"
           ></div>
-    </div>
+    </div> -->
   </div>
 
 </template>
 
 <script setup>
-import { useApi } from '@/composable/axios'
-import { useUserStore } from '@/store/user'
-import { useSnackbar } from 'vuetify-use-dialog'
-import { useRouter } from 'vue-router'
-import MainBtnView from '@/components/btn/MainBtnView.vue'
-import SubBtnView from '@/components/btn/SubBtnView.vue'
-import CardView from '@/components/card/CardView.vue'
-import CarouselView from '@/components/CarouselView.vue'
-import { ref, onMounted, nextTick } from 'vue'
-const router = useRouter()
-const { api } = useApi()
-const createSnackbar = useSnackbar()
-const activities = ref([])
-const name = ref('') // 創建一個 ref 來存儲名稱
-const images = ref('') // 創建一個 ref 來存儲圖片
-const description = ref('') // 創建一個 ref 來存儲描述
-const startDate = ref('') // 創建一個 ref 來存儲描述
-const endDate = ref('') // 創建一個 ref 來存儲描述
-const startTime = ref('') // 創建一個 ref 來存儲描述
-const endTime = ref('') // 創建一個 ref 來存儲描述
-const participants = ref('')
-const location = ref('')
-const category = ref('')
-const area = ref('')
-
-// const cards = ref([])
-onMounted(async () => {
-  try {
-    const { data } = await api.get('/activity/play')
-    name.value = data.result.data[0].name
-    images.value = data.result.data[0].images
-    startDate.value = data.result.data[0].startDate
-    endDate.value = data.result.data[0].endDate
-    startTime.value = data.result.data[0].startTime
-    endTime.value = data.result.data[0].endTime
-    location.value = data.result.data[0].location
-    participants.value = data.result.data[0].participants
-    description.value = data.result.data[0].description
-    category.value = data.result.data[0].category
-    area.value = data.result.data[0].area
-
-    console.log(data) // 查看完整的响应体
-    activities.value.push(...data.result.data)
-    console.log('activities', activities.value)
-    await nextTick()
-  } catch (error) {
-    console.log(error)
-    const text = error?.response?.data?.message || '發生錯誤，請稍後再試'
-    createSnackbar({
-      text,
-      showCloseButton: false,
-      snackbarProps: {
-        timeout: 2000,
-        color: 'red',
-        location: 'bottom'
-      }
-    })
-  }
-})
+import PlayCardView from '@/components/homeCard/PlayCardView.vue'
+import DriveCardView from '@/components/homeCard/DriveCardView.vue'
+import BuyCardView from '@/components/homeCard/BuyCardView.vue'
+import HotelCardView from '@/components/homeCard/HotelCardView.vue'
 </script>
 <style scoped>
 .cardBody{
