@@ -85,8 +85,8 @@ const props = defineProps(['_id', 'location', 'title', 'people', 'startDate', 'e
     text-decoration: none;
   }
   .cardBody{
-    height:340px;
-    width:250px;
+    height:360px;
+    width:270px;
     border-radius:10px;
     box-shadow: 0px 3px 2px 2px #e5cfcf;
     margin-right: 30px;
