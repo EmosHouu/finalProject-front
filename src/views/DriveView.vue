@@ -224,4 +224,8 @@ onMounted(async () => {
     margin: 10px;
     padding: 10px;
     }
+    .v-container{
+      width: 85%;
+      margin-top:10px;
+    }
 </style>

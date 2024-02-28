@@ -2,7 +2,7 @@
   <div class="body">
   <div class="header">
     <SmallCarouselView :title="'揪團玩'"></SmallCarouselView>
-    <!-- <SearchbarView></SearchbarView> -->
+    <SearchbarView></SearchbarView>
   </div>
     <!-- <SectionView
 :fill="'#FFD4C0'"
@@ -90,7 +90,9 @@
         </svg>
         <p class="text">揪團玩活動</p>
 
-  <v-container text-align="center">
+  <v-container
+text-align="center"
+>
     <v-row text-align="center">
       <v-col
         v-for="activity in activities"
@@ -190,7 +192,7 @@ onMounted(async () => {
   }
   .sectionBody{
     width:85%;
-    /* 記得改min-height 才會隨著圖片變化 */
+    /* 記得改min-height  */
     min-height:100vh;
     background-color: #ffffffb3;
     border-radius: 20px;
@@ -224,5 +226,9 @@ onMounted(async () => {
     .card-detail-view {
     margin: 10px;
     padding: 10px;
+    }
+    .v-container{
+      width: 85%;
+      margin-top:10px;
     }
 </style>
