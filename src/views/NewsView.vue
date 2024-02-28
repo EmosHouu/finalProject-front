@@ -129,7 +129,7 @@ class="description"
         <h1>其他推薦活動</h1>
         </VCol>
         <VCol
-        v-for="activity in activities"
+        v-for="activity in activities.slice(0, 3)"
         :key="activity._id"
         cols="12"
         md="3"

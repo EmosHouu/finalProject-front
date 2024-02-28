@@ -1,7 +1,7 @@
 <template>
   <div class="body">
   <div class="header">
-    <SmallCarouselView :title="'揪團玩'"></SmallCarouselView>
+    <SmallCarouselView :title="'揪團行'"></SmallCarouselView>
     <SearchbarView></SearchbarView>
   </div>
     <!-- <SectionView
@@ -88,7 +88,7 @@
         stroke-width="2"
         />
         </svg>
-        <p class="text">揪團玩活動</p>
+        <p class="text">揪團行活動</p>
 
   <v-container text-align="center">
     <v-row text-align="center">
@@ -149,7 +149,7 @@ const area = ref('')
 // const cards = ref([])
 onMounted(async () => {
   try {
-    const { data } = await api.get('/activity/play')
+    const { data } = await api.get('/activity/go')
     name.value = data.result.data[0].name
     images.value = data.result.data[0].images
     startDate.value = data.result.data[0].startDate
