@@ -50,8 +50,10 @@ const navigateToHotel = () => {
         /* height:; */
         height:250px;
         background-image: url(../assets/footer.png);
+        background-size: cover;
         background-color: #FFEFE8;
         position: relative;
+        object-fit: cover;
     }
     .option{
         display: flex;

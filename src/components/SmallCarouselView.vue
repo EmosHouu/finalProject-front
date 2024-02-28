@@ -481,7 +481,7 @@ const resetHover = () => {
 }
 .curve{
   position: absolute;
-  top:455px;
+  top:457px;
   width:100%;
   object-fit: cover;
 }
