@@ -2,7 +2,7 @@
   <div class="body">
   <div class="header">
     <SmallCarouselView :title="'揪團玩'"></SmallCarouselView>
-    <SearchbarView></SearchbarView>
+    <!-- <SearchbarView></SearchbarView> -->
   </div>
     <!-- <SectionView
 :fill="'#FFD4C0'"
@@ -126,7 +126,7 @@ text-align="center"
 <script setup>
 import SmallCarouselView from '../components/SmallCarouselView.vue'
 import CardDetailView from '@/components/card/CardDetailView.vue'
-import SearchbarView from '@/components/btn/SearchbarView.vue'
+// import SearchbarView from '@/components/btn/SearchbarView.vue'
 
 import { useApi } from '@/composable/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
