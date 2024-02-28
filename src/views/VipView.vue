@@ -13,7 +13,8 @@ color="rgb(236, 188, 188)"
       direction="vertical"
       color="primary"
       >
-      <VListItem class="avatar"
+      <VListItem
+class="avatar"
           :prepend-avatar="user.avatar"
           :title="user.account"
           :subtitle="user.name"
@@ -40,7 +41,7 @@ color="rgb(236, 188, 188)"
       <v-window v-model="tab">
         <v-window-item
         value="option-1"
-        class="text-center"
+        class="centered-content"
         >
         <ActivityManageView />
         </v-window-item>
@@ -51,7 +52,7 @@ color="rgb(236, 188, 188)"
         <SignupActivityView />
         </v-window-item>
         <v-window-item value="option-3">
-          <MemberEditView/>
+          <MemberEditView />
           <!-- <v-card flat>
             <v-card-text>
               <p>
@@ -150,8 +151,10 @@ const prependAvatar = computed(() => {
 
   .centered-content {
   display: flex;
-  justify-content: center;
-  width: 100%; /* 或根据需要设置的宽度 */
-  margin: auto; /* 实现水平居中 */
+  justify-content: center; /* 確保子元素在主軸上居中 */
+  align-items: center; /* 如果您也想在垂直方向上居中，可以使用這個 */
+  flex-direction: column; /* 如果您的內容是垂直排列的，使用column */
+  height: 100%; /* 確保有足夠的高度 */
 }
+
 </style>

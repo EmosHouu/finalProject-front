@@ -1,54 +1,57 @@
 <template>
     <v-container>
-      <v-col cols="12">
-        <h1 class="text-center">已報名活動管理</h1>
-      </v-col>
-      <v-divider></v-divider>
-      <v-col cols="12">
-        <v-data-table
-:items="cart"
-:headers="headers"
->
-          <template #[`item.activity.name`]="{ item }">
-            <span>{{ item.activity.name }}</span>
-          </template>
-          <template #[`item.quantity`]="{ item }">
-            <v-btn
-variant="text"
-icon="mdi-minus"
-color="red"
-@click="addCart(item.activity._id, -1)"
-></v-btn>
-            {{ item.quantity }}
-            <v-btn
-variant="text"
-icon="mdi-plus"
-color="green"
-@click="addCart(item.activity._id, 1)"
-></v-btn>
-          </template>
-          <template #[`item.action`]="{ item }">
-            <v-btn
-variant="text"
-icon="mdi-delete"
-color="red"
-@click="addCart(item.activity._id, item.quantity * -1)"
-></v-btn>
-          </template>
-        </v-data-table>
-      </v-col>
-      <v-col
-class="text-center"
-cols="12"
->
-        <p>報名活動總數: {{ total }}</p>
-        <!-- <v-btn
-color="green"
-:disabled="!canCheckout"
-:loading="isSubmitting"
-@click="checkout"
->結帳</v-btn> -->
-      </v-col>
+      <v-row class="tabWindow">
+        <v-col cols="12">
+          <h1 class="text-center">已報名活動管理</h1>
+        </v-col>
+        <v-divider></v-divider>
+        <v-col cols="12">
+          <v-data-table
+  :items="cart"
+  :headers="headers"
+  >
+            <template #[`item.activity.name`]="{ item }">
+              <span>{{ item.activity.name }}</span>
+            </template>
+            <template #[`item.quantity`]="{ item }">
+              <v-btn
+  variant="text"
+  icon="mdi-minus"
+  color="red"
+  @click="addCart(item.activity._id, -1)"
+  ></v-btn>
+              {{ item.quantity }}
+              <v-btn
+  variant="text"
+  icon="mdi-plus"
+  color="green"
+  @click="addCart(item.activity._id, 1)"
+  ></v-btn>
+            </template>
+            <template #[`item.action`]="{ item }">
+              <v-btn
+  variant="text"
+  icon="mdi-delete"
+  color="red"
+  @click="addCart(item.activity._id, item.quantity * -1)"
+  ></v-btn>
+            </template>
+          </v-data-table>
+        </v-col>
+        <v-col
+  class="text-center"
+  cols="12"
+  >
+          <p>報名活動總數: {{ total }}</p>
+          <!-- <v-btn
+  color="green"
+  :disabled="!canCheckout"
+  :loading="isSubmitting"
+  @click="checkout"
+  >結帳</v-btn> -->
+        </v-col>
+
+      </v-row>
     </v-container>
 </template>
 
@@ -172,3 +175,8 @@ onMounted(async () => {
   }
 })
 </script>
+<style scoped>
+  .tabWindow{
+    margin-left: 250px;
+  }
+</style>

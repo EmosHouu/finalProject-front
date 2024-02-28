@@ -1,6 +1,6 @@
 <template lang="pug">
     VContainer
-      VRow
+      VRow.tabWindow
         VCol(cols="12")
           h1.text-center 已開團活動管理
         VDivider
@@ -440,3 +440,8 @@ const tableApplySearch = () => {
   tableLoadItems()
 }
 </script>
+<style scoped>
+  .tabWindow{
+    margin-left: 300px;
+  }
+</style>

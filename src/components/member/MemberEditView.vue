@@ -1,19 +1,21 @@
 <template>
     <v-container>
-        <v-row>
+        <v-row class="tabWindow">
             <v-col cols="12">
-                <h1 text-center>會員資料編輯</h1>
+                <h1
+class="text-center"
+>會員資料編輯</h1>
                 <v-divider></v-divider>
             </v-col>
-        </v-row>
-    <!-- <VListItem
-    :prepend-avatar="user.avatar"
-    :title="user.account"
-    :subtitle="user.name"
-    ></VListItem> -->
-    <v-col cols="12">
-        <v-sheet width="300" class="mx-auto">
-        <v-form fast-fail @submit.prevent>
+            <v-col cols="12">
+        <v-sheet
+width="300"
+class="mx-auto"
+>
+        <v-form
+fast-fail
+@submit.prevent
+>
         <v-text-field
             v-model="account"
             label="帳號"
@@ -63,10 +65,20 @@
             :rules="phoneRules"
             prepend-icon="mdi-phone"
         ></v-text-field>
-        <v-btn type="submit" block class="mt-2">確定修改</v-btn>
+        <v-btn
+type="submit"
+block
+class="mt-2"
+>確定修改</v-btn>
         </v-form>
         </v-sheet>
     </v-col>
+        </v-row>
+    <!-- <VListItem
+    :prepend-avatar="user.avatar"
+    :title="user.account"
+    :subtitle="user.name"
+    ></VListItem> -->
 
         <!-- <p>會員帳號：{{user.account}}</p>
         <p>會員名稱：{{user.name}}</p>
@@ -132,4 +144,7 @@ const phoneRules = ref([
 
 </script>
 <style scoped>
+  .tabWindow{
+    margin-left: 450px;
+  }
 </style>
