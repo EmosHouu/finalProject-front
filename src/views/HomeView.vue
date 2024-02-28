@@ -194,7 +194,7 @@ const area = ref('')
 // const cards = ref([])
 onMounted(async () => {
   try {
-    const { data } = await api.get('/activity')
+    const { data } = await api.get('/activity/play')
     name.value = data.result.data[0].name
     images.value = data.result.data[0].images
     startDate.value = data.result.data[0].startDate

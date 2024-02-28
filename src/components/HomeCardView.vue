@@ -10,7 +10,11 @@ class="circle"
 alt="img"
 ></div>
         <div class="card">
-            <CardView v-for="(data, index) in apiData" :key="index" :area="data.area" />
+            <CardView
+v-for="(data, index) in apiData"
+:key="index"
+:area="data.area"
+/>
             <!-- <CardView :location="'京都'"></CardView>
             <CardView :location="'京都'"></CardView> -->
         </div>

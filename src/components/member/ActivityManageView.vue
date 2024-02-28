@@ -407,14 +407,13 @@ const tableSearch = ref('')
 const tableLoadItems = async () => {
   tableLoading.value = true
   try {
-    const { data } = await apiAuth.get('/activity/all/', {
+    const { data } = await apiAuth.get('/activity/all', {
       params: {
         page: tablePage.value,
         itemsPerPage: tableItemsPerPage.value,
         sortBy: tableSortBy.value[0]?.key || 'createdAt',
         sortOrder: tableSortBy.value[0]?.order === 'asc' ? 1 : -1,
-        search: tableSearch.value,
-        userId: user.id
+        search: tableSearch.value
       }
     })
     tableActivity.value.splice(0, tableActivity.value.length, ...data.result.data)

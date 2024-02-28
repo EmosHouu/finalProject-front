@@ -91,7 +91,7 @@
         <div class="cardSection">
             <v-container>
             <v-row
-                align="center"
+                text-align="center"
                 no-gutters
                 style="height: 150px;"
             >
@@ -105,11 +105,12 @@
                 :title="activity.name"
                 :location="activity.area"
                 :people="activity.participants"
-                :startDate="activity.startDate"
-                :endDate="activity.endDate"
+                :start-date="activity.startDate"
+                :end-date="activity.endDate"
                 :images="activity.images"
                 :category="activity.category"
                 :area="activity.area"
+                class="card-detail-view"
                 ></CardDetailView>
             <!-- </RouterLink> -->
             </v-row>
@@ -128,9 +129,9 @@ import SearchbarView from '@/components/btn/SearchbarView.vue'
 import { useApi } from '@/composable/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useRouter } from 'vue-router'
+import { ref, onMounted, nextTick } from 'vue'
 const router = useRouter()
 const createSnackbar = useSnackbar()
-import { ref, onMounted, nextTick } from 'vue'
 const { api } = useApi()
 const activities = ref([])
 const name = ref('') // 創建一個 ref 來存儲名稱
@@ -148,7 +149,7 @@ const area = ref('')
 // const cards = ref([])
 onMounted(async () => {
   try {
-    const { data } = await api.get('/activity')
+    const { data } = await api.get('/activity/play')
     name.value = data.result.data[0].name
     images.value = data.result.data[0].images
     startDate.value = data.result.data[0].startDate
@@ -215,4 +216,8 @@ onMounted(async () => {
         left:40px;
     }
 
+    .card-detail-view {
+    margin: 10px;
+    padding: 10px;
+    }
 </style>
