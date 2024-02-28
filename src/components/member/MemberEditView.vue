@@ -6,8 +6,14 @@
     :subtitle="user.name"
     ></VListItem>
 
-    <v-sheet width="300" class="mx-auto">
-    <v-form fast-fail @submit.prevent>
+    <v-sheet
+width="300"
+class="mx-auto"
+>
+    <v-form
+fast-fail
+@submit.prevent
+>
       <v-text-field
         v-model="account"
         label="帳號"
@@ -33,7 +39,7 @@
       <VTextField
         v-model="birthday"
         label="生日"
-        readonly="readonly"
+        :readonly="true"
         prepend-icon="mdi-calendar"
         ></VTextField>
 
@@ -57,7 +63,11 @@
         :rules="phoneRules"
         prepend-icon="mdi-phone"
       ></v-text-field>
-      <v-btn type="submit" block class="mt-2">確定修改</v-btn>
+      <v-btn
+type="submit"
+block
+class="mt-2"
+>確定修改</v-btn>
     </v-form>
   </v-sheet>
 
@@ -66,14 +76,14 @@
         <p>會員名稱：{{user.email}}</p> -->
 </template>
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import { isEmail, isMobilePhone } from 'validator' // 导入用于验证邮箱格式的工具库，例如 validator
 // 引用pinia狀態管理庫裡的user
 import { useUserStore } from '@/store/user'
 const user = useUserStore()
-const prependAvatar = computed(() => {
-    return `https://source.boringavatars.com/beam/120/${user.account}?colors=4EB3DE,8DE0A6,FCF09F,F27C7C,DE528C`
-})
+// const prependAvatar = computed(() => {
+//   return `https://source.boringavatars.com/beam/120/${user.account}?colors=4EB3DE,8DE0A6,FCF09F,F27C7C,DE528C`
+// })
 // onMounted(() => {
 //     user.getProfile()
 //     console.log(user.getProfile())
@@ -113,7 +123,6 @@ const day = String(userBirthday.getDate()).padStart(2, '0')
 const formattedBirthday = `${year}/${month}/${day}`
 console.log(formattedBirthday)
 const birthday = ref(formattedBirthday)
-
 
 const phone = ref(user.phone)
 const phoneRules = ref([
