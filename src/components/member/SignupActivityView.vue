@@ -176,7 +176,7 @@ onMounted(async () => {
 })
 </script>
 <style scoped>
-  .tabWindow{
+  /* .tabWindow{
     margin-left: 250px;
-  }
+  } */
 </style>

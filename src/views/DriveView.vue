@@ -1,7 +1,10 @@
 <template>
   <div class="body">
-  <div class="header">
-    <SmallCarouselView :title="'揪團行'"></SmallCarouselView>
+    <div class="header">
+    <SmallCarouselView
+:title="'揪團玩'"
+class="responsive-carousel"
+></SmallCarouselView>
     <!-- <SearchbarView></SearchbarView> -->
   </div>
     <!-- <SectionView
@@ -13,7 +16,7 @@
 :text="'最新揪團活動'"
 ></SectionView> -->
 
-<div class="sectionBody">
+<v-container class="sectionBody">
         <svg
           class="circle"
           width="200"
@@ -90,7 +93,6 @@
         </svg>
         <p class="text">揪團行活動</p>
 
-  <v-container text-align="center">
     <v-row text-align="center">
       <v-col
         v-for="activity in activities"
@@ -115,8 +117,6 @@
       </v-col>
     </v-row>
   </v-container>
-
-</div>
 
   </div>
 </template>
@@ -185,19 +185,25 @@ onMounted(async () => {
   .header{
     width:100%;
   }
+
+  .responsive-carousel {
+  width: 100%;
+  }
+
   .body{
     height: 100%;
   }
   .sectionBody{
-    width:85%;
-    min-height:100vh;
+    /* width:100%; */
+    /* 記得改min-height  */
+    /* min-height:100vh; */
     background-color: #ffffffb3;
     border-radius: 20px;
     position: relative;
     margin:auto;
-    margin-top:60px;
+    margin-top:70px;
     margin-bottom: 100px;
-    padding: 20px;
+    padding:30px;
     box-shadow: 0px 3px 2px 2px #e5cfcf;
   }
     .circle{
@@ -221,9 +227,10 @@ onMounted(async () => {
     }
 
     .card-detail-view {
-    margin: 10px;
-    padding: 10px;
+      margin-top: 40px;
+      padding: 10px;
     }
+
     .v-container{
       width: 85%;
       margin-top:10px;

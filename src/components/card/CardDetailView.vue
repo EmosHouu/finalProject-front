@@ -89,7 +89,7 @@ const props = defineProps(['_id', 'location', 'title', 'people', 'startDate', 'e
     width:270px;
     border-radius:10px;
     box-shadow: 0px 3px 2px 2px #e5cfcf;
-    margin-right: 30px;
+    margin-right: 80px;
   }
   .location{
     display:flex;
@@ -99,4 +99,5 @@ const props = defineProps(['_id', 'location', 'title', 'people', 'startDate', 'e
     padding-left:10px;
     padding-top:5px;
   }
+
   </style>

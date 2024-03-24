@@ -442,6 +442,6 @@ const tableApplySearch = () => {
 </script>
 <style scoped>
   .tabWindow{
-    margin-left: 300px;
+    margin-left: 10px;
   }
 </style>

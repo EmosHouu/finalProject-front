@@ -145,6 +145,6 @@ const phoneRules = ref([
 </script>
 <style scoped>
   .tabWindow{
-    margin-left: 450px;
+    margin-left: 140px;
   }
 </style>

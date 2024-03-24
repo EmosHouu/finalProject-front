@@ -41,7 +41,7 @@ class="text-decoration-none"
   </div>
 </template>
 <script setup>
-    import { useApi } from '@/composable/axios'
+import { useApi } from '@/composable/axios'
 import { useUserStore } from '@/store/user'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useRouter } from 'vue-router'
