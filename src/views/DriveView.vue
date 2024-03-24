@@ -2,7 +2,7 @@
   <div class="body">
     <div class="header">
     <SmallCarouselView
-:title="'揪團玩'"
+:title="'揪團行'"
 class="responsive-carousel"
 ></SmallCarouselView>
     <!-- <SearchbarView></SearchbarView> -->
