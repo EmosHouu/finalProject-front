@@ -171,7 +171,8 @@ const { api, apiAuth } = useApi()
 const user = useUserStore()
 
 const tab = ref(null)
-const items = ['首頁', '揪團玩', '揪團行', '揪團買', '揪團住', '好康報你知', '會員中心']
+// 暫時刪除好康報你知
+const items = ['首頁', '揪團玩', '揪團行', '揪團買', '揪團住', '會員中心']
 // 使用计算属性动态生成items数组，如果用户登录，则添加“会员中心”
 const newitems = computed(() => {
   if (user.isLogin) {
@@ -438,6 +439,42 @@ const logout = async () => {
 .custom-text-field {
   width: 90%; /* 或者使用您希望的具体宽度值 */
   margin: auto; /* 居中对齐 */
+}
+
+@media screen and (max-width: 600px) {
+  .headerBG {
+    height: 100px;
+  }
+  .temple {
+    width: 100px;
+    top: 10px;
+    left: 70px;
+  }
+  .logo {
+    width: 20%;
+    top: -10px;
+    left: 180px;
+  }
+  .sun {
+    width: 70px;
+    top: 5px;
+    right: 70px;
+  }
+  .createActivity {
+    right: 330px;
+    top: 10px;
+    width: 60px;
+    height: 60px;
+    font-size: 14px;
+  }
+  .member {
+    right: 240px;
+    top: 10px;
+    width: 60px;
+    height: 60px;
+    font-size: 14px;
+  }
+  /* 其他需要改變的樣式 */
 }
 
 </style>

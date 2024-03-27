@@ -3,7 +3,9 @@
   <v-main>
     <routerView></routerView>
   </v-main>
+
   <FooterView />
+
 </template>
 
 <script setup>
